@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - Электрик Казань</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            color: #222;
+            border-bottom: 3px solid #2196F3;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Кнопка */
+        .btn {
+            display: inline-block;
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+
+        .btn:hover {
+            background-color: #0b7dda;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            border: none;
+            padding: 0;
+            font-size: 1.6em;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95em;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #0b7dda;
+        }
+
+        /* Отзывы - сетка */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            border-left: 4px solid #2196F3;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .review-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .review-rating {
+            color: #FFB800;
+            font-size: 1.1em;
+            margin-left: 10px;
+        }
+
+        .review-service {
+            color: #2196F3;
+            font-size: 0.85em;
+            background: #E3F2FD;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin: 8px 0;
+        }
+
+        .review-text {
+            color: #555;
+            line-height: 1.6;
+            margin: 12px 0;
+            font-size: 0.95em;
+        }
+
+        .review-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h4 {
+            color: #2196F3;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .faq-item p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Таблица стилей */
+        .important-box {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .important-box strong {
+            color: #E65100;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<!-- Top Info Bar -->
+    <div class="top-bar" id="topBar">
+        <div class="container">
+            <div class="top-bar-item">
+                <span class="icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14" />
+    <path d="M11 4h2" />
+    <path d="M12 17v.01" />
+  </svg>
+</span>
+
+                <a href="tel:+79991234567" id="phoneLink">+7 (999) 123-45-67</a>
+
+            </div>
+            <div class="top-bar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock-12"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 0 0 9 9m9 -9a9 9 0 1 0 -18 0" /><path d="M12 7v5l.5 .5" /><path d="M18 15h2a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-1a1 1 0 0 0 -1 1v1a1 1 0 0 0 1 1h2" /><path d="M15 21v-6" /></svg>
+                <span>Ежедневно: 9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+
+      <div class="logo">
+        <a class="logo-link" href="../index.html">
+          <img class="logo-img" src="../assets/icons/logo-horizontal.svg" alt="ПрофЭлектрик Казань">
+          <div class="logo-text">
+            <span>ПрофЭлектрик</span>
+            <div class="city-name">Казань</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="uslugi-i-ceny.html">Услуги и цены</a>
+        <a href="../pages/about-company.html">О компании</a>
+        <a href="../pages/otzivy.html">Отзывы</a>
+        <a href="../pages/faq-section.html">Вопросы</a>
+        <a href="../pages/contact-info.html">Контакты</a>
+       
+      </nav>
+
+      <button class="btn-call" type="button" onclick="openModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" class="btn-call-icon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+          <path d="M15 6l2 2l4 -4" />
+        </svg>
+        Вызвать электрика
+      </button>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Открыть меню" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <span class="breadcrumb-item"><a href="../index.html">Главная</a></span>
+            <span class="breadcrumb-item"><span>/</span></span>
+            <span class="breadcrumb-item active">Отзывы</span>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1>⭐ Отзывы наших клиентов</h1>
+        <p class="subtitle">Читайте, что говорят о нашей работе люди, которым мы помогли решить проблемы с электричеством</p>
+
+        <button class="btn" type="button" onclick="openReviewModal()">Оставить отзыв</button>
+
+
+        <!-- Модальное окно -->
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Оставить отзыв</h2>
+                    <button class="close-btn" type="button" onclick="closeReviewModal()">&times;</button>
+
+                </div>
+
+                <form id="reviewForm" onsubmit="submitReview(event)">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Номер телефона *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 999-99-99">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Какую услугу получили? *</label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Выберите услугу --</option>
+                            <option value="Монтаж розеток">Монтаж розеток</option>
+                            <option value="Монтаж выключателей">Монтаж выключателей</option>
+                            <option value="Монтаж люстры">Монтаж люстры</option>
+                            <option value="Электропроводка">Электропроводка</option>
+                            <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+                            <option value="Замена счётчика">Замена счётчика</option>
+                            <option value="Монтаж УЗО">Монтаж УЗО</option>
+                            <option value="Другое">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Оценка *</label>
+                        <select id="rating" name="rating" required>
+                            <option value="">-- Выберите оценку --</option>
+                            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Отлично</option>
+                            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Хорошо</option>
+                            <option value="⭐⭐⭐">⭐⭐⭐ Нормально</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">Ваш отзыв *</label>
+                        <textarea id="text" name="text" placeholder="Расскажите о вашем опыте работы с нашей компанией..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Отправить отзыв</button>
+                </form>
+            </div>
+        </div>
+<!-- Modal Window -->
+    <div id="callModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Оставить заявку</h2>
+                <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
+                <div class="form-group">
+                    <label for="modalName">Ваше имя *</label>
+                    <input type="text" id="modalName" required placeholder="Ваше имя">
+                </div>
+
+                <div class="form-group">
+                    <label for="modalPhone">Телефон *</label>
+                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
+                </div>
+
+                <div class="form-group">
+                    <label for="modalService">Услуга *</label>
+                    <select id="modalService" required>
+                        <option value="">-- Выберите услугу --</option>
+                        <option value="Монтаж розеток">Монтаж розеток</option>
+                        <option value="Монтаж выключателей">Монтаж выключателей</option>
+                        <option value="Установка освещения">Установка освещения</option>
+                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+                        <option value="Монтаж автомата">Монтаж автомата</option>
+                        <option value="Аварийный вызов">Аварийный вызов</option>
+                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modalMessage">Опишите проблему</label>
+                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+            </form>
+
+            <div id="modalSuccess" class="modal-success">
+                <div class="success-icon">✅</div>
+                <h3>Заявка отправлена!</h3>
+                <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Отзывы -->
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews-grid" id="reviewsContainer">
+            <!-- Отзывы загружаются здесь -->
+        </div>
+
+        <!-- FAQ -->
+        <h2>Часто задаваемые вопросы</h2>
+
+        <div class="faq-item">
+            <h4>Как оставить отзыв?</h4>
+            <p>Нажмите на кнопку "Оставить отзыв" выше, заполните форму и отправьте. Ваш отзыв появится на странице после проверки.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Почему нужны реальные отзывы?</h4>
+            <p>Реальные отзывы помогают другим людям сделать правильный выбор и убедиться в качестве нашей работы. Мы ценим каждое мнение.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Что делать, если возникла проблема с выполненной работой?</h4>
+            <p>На все работы предоставляется гарантия до 3 лет. Свяжитесь с нами по телефону или заполните форму обратной связи, и мы решим проблему.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Как быстро обновляются отзывы?</h4>
+            <p>Новые отзывы проверяются в течение 24 часов и добавляются на страницу. Все отзывы вводятся вручную для соответствия стандартам качества.</p>
+        </div>
+
+        <div class="important-box">
+            <p><strong>Важно:</strong> Мы благодарны за любые отзывы — как положительные, так и рекомендации к улучшению. Это помогает нам становиться лучше. Если у вас есть пожелания, пожалуйста, напишите в отзыве — мы прислушаемся.</p>
+        </div>
+    </div>
+
+    <script>
+        // Примеры отзывов по умолчанию
+        const defaultReviews = [
+            {
+                name: "Иван Петров",
+                rating: "⭐⭐⭐⭐⭐",
+                service: "Монтаж розеток",
+                text: "Спасибо за качественную работу! Мастер приехал вовремя, всё сделал аккуратно и профессионально. Цена справедливая. Рекомендую!",
+                date: "2 дня назад"
+            },
+            {
+                name: "Мария Сидорова",
+                rating: "⭐⭐⭐⭐⭐",
+                service: "Монтаж люстры",
+                text: "Очень доволена результатом! Люстра установлена идеально, мастер был вежлив и внимателен. Спасибо за быстрый выезд!",
+                date: "Неделю назад"
+            },
+            {
+                name: "Алексей Иванов",
+                rating: "⭐⭐⭐⭐⭐",
+                service: "Ремонт электропроводки",
+                text: "Отличный специалист! Диагностировал проблему быстро и качественно её исправил. Гарантия и смета были предоставлены заранее. Спасибо!",
+                date: "2 недели назад"
+            },
+            {
+                name: "Елена Новикова",
+                rating: "⭐⭐⭐⭐⭐",
+                service: "Замена счётчика",
+                text: "Профессионально и без проблем! Мастер всё объяснил, чисто работал, убрал за собой. Будем обращаться ещё. Рекомендую!",
+                date: "3 недели назад"
+            },
+            {
+                name: "Дмитрий Смирнов",
+                rating: "⭐⭐⭐⭐",
+                service: "Электропроводка",
+                text: "Хорошая работа. Мастер знает своё дело и работает добросовестно. Немного дольше ожидал, но результат качественный.",
+                date: "Месяц назад"
+            },
+            {
+                name: "Анна Кузнецова",
+                rating: "⭐⭐⭐⭐⭐",
+                service: "Монтаж УЗО",
+                text: "Спасибо за быстрый и профессиональный выезд! Всё сделано на высоком уровне. Очень доволена. Рекомендую всем!",
+                date: "Месяц назад"
+            }
+        ];
+
+        // Загрузить отзывы
+        function loadReviews() {
+            const storedReviews = localStorage.getItem('reviews');
+            const reviews = storedReviews ? JSON.parse(storedReviews) : defaultReviews;
+            renderReviews(reviews);
+        }
+
+        // Отобразить отзывы
+        function renderReviews(reviews) {
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = '';
+
+            reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div>
+                            <div class="review-name">${review.name}</div>
+                            <div class="review-rating">${review.rating}</div>
+                        </div>
+                    </div>
+                    <div class="review-service">${review.service}</div>
+                    <p class="review-text">"${review.text}"</p>
+                    <div class="review-date">${review.date}</div>
+                `;
+                container.appendChild(reviewCard);
+            });
+        }
+
+        // ===== Отзывы (reviewModal) =====
+function openReviewModal() {
+  const m = document.getElementById('reviewModal');
+  if (!m) return;
+  m.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReviewModal() {
+  const m = document.getElementById('reviewModal');
+  if (!m) return;
+  m.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Закрытие по клику на фон (отзывы)
+window.addEventListener('click', (event) => {
+  const m = document.getElementById('reviewModal');
+  if (m && event.target === m) closeReviewModal();
+});
+
+
+// ===== Заявка (callModal) =====
+function openCallModal() {
+  const modal = document.getElementById('callModal');
+  const modalForm = document.getElementById('modalForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+  if (!modal) return;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (modalForm) modalForm.style.display = 'block';
+  if (modalSuccess) modalSuccess.classList.remove('show');
+}
+
+function closeCallModal() {
+  const modal = document.getElementById('callModal');
+  const modalForm = document.getElementById('modalForm');
+  if (!modal) return;
+
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+  if (modalForm) modalForm.reset();
+}
+
+function handleModalSubmit(event) {
+  event.preventDefault();
+
+  const modalForm = document.getElementById('modalForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+
+  if (modalForm) modalForm.style.display = 'none';
+  if (modalSuccess) modalSuccess.classList.add('show');
+
+  setTimeout(closeCallModal, 3000);
+}
+
+// Закрытие по клику на фон (заявка)
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('callModal');
+  if (modal && event.target === modal) closeCallModal();
+});
+
+
+        // Загрузить отзывы при загрузке страницы
+        loadReviews();
+    </script>
+ <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== Mobile menu toggle =====
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.remove('active'));
+                });
+            }
+
+            // ===== Sticky header offset =====
+            const topBar = document.getElementById('topBar');
+            const header = document.querySelector('header');
+
+            if (header) {
+                const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+
+                header.style.top = `${getTopbarHeight()}px`;
+
+                let lastScrollTop = 0;
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollTop > lastScrollTop) {
+                        header.style.top = '0px';
+                        header.style.zIndex = '102';
+                    } else {
+                        header.style.top = `${getTopbarHeight()}px`;
+                        header.style.zIndex = '100';
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+
+                window.addEventListener('resize', () => {
+                    header.style.top = `${getTopbarHeight()}px`;
+                });
+            }
+
+            // ===== Copy phone to clipboard =====
+            const phoneLink = document.getElementById('phoneLink');
+            if (phoneLink) {
+                const originalText = phoneLink.textContent;
+
+                phoneLink.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+
+                    try {
+                        await navigator.clipboard.writeText(phoneToCopy);
+                        phoneLink.textContent = 'Скопировано!';
+                        setTimeout(() => (phoneLink.textContent = originalText), 1200);
+                    } catch (err) {
+                        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+                    }
+                });
+            }
+        });
+
+        // ===== Modal functionality =====
+        const modal = document.getElementById('callModal');
+        const modalForm = document.getElementById('modalForm');
+        const modalSuccess = document.getElementById('modalSuccess');
+
+        window.openModal = function () {
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (modalForm) modalForm.style.display = 'block';
+            if (modalSuccess) modalSuccess.classList.remove('show');
+        };
+
+        window.closeModal = function () {
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if (modalForm) modalForm.reset();
+        };
+
+        window.handleModalSubmit = function (event) {
+            event.preventDefault();
+
+            if (modalForm) modalForm.style.display = 'none';
+            if (modalSuccess) modalSuccess.classList.add('show');
+
+            setTimeout(window.closeModal, 3000);
+        };
+
+        // Закрытие по клику на фон
+        window.addEventListener('click', (event) => {
+            if (modal && event.target === modal) window.closeModal();
+        });
+    </script>
+</body>
+</html>

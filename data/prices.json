@@ -1,0 +1,85 @@
+{
+  "services": [
+    {
+      "id": "socket-install",
+      "name": "Установка розеток",
+      "description": "Монтаж одной розетки",
+      "price": 190,
+      "currency": "₽",
+      "unit": "шт"
+    },
+    {
+      "id": "switch-install",
+      "name": "Установка выключателей",
+      "description": "Монтаж одного выключателя",
+      "price": 190,
+      "currency": "₽",
+      "unit": "шт"
+    },
+    {
+      "id": "doorbell-install",
+      "name": "Установка звонка",
+      "description": "Полная установка со звонком",
+      "price": 200,
+      "currency": "₽",
+      "unit": "шт"
+    },
+    {
+      "id": "lamp-install",
+      "name": "Установка люстр, светильников",
+      "description": "Монтаж и подключение",
+      "price": 380,
+      "currency": "₽",
+      "unit": "шт"
+    },
+    {
+      "id": "breakage-repair",
+      "name": "Устранение обрыва, короткого замыкания",
+      "description": "Диагностика и ремонт",
+      "price": 490,
+      "currency": "₽",
+      "unit": "работа"
+    },
+    {
+      "id": "wiring-repair",
+      "name": "Ремонт электропроводки",
+      "description": "Полная диагностика и ремонт",
+      "price": 490,
+      "currency": "₽",
+      "unit": "работа"
+    },
+    {
+      "id": "cable-laying",
+      "name": "Прокладка кабеля",
+      "description": "За 1 погонный метр",
+      "price": 30,
+      "currency": "₽",
+      "unit": "п.м."
+    },
+    {
+      "id": "wall-chiseling",
+      "name": "Штробление стен",
+      "description": "За 1 погонный метр",
+      "price": 400,
+      "currency": "₽",
+      "unit": "п.м."
+    },
+    {
+      "id": "meter-install",
+      "name": "Монтаж счетчика электроэнергии",
+      "description": "Полная установка",
+      "price": 400,
+      "currency": "₽",
+      "unit": "шт"
+    },
+    {
+      "id": "automaton-install",
+      "name": "Установка автоматов, УЗО",
+      "description": "За один прибор",
+      "price": 250,
+      "currency": "₽",
+      "unit": "шт"
+    }
+  ],
+  "note": "Точная стоимость определяется после консультации и оценки объема работ. Предоставляем скидки при больших объемах."
+}

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопросы - ПрофЭлектрик Казань</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1565C0;
+            --color-primary-dark: #0D3A96;
+            --color-text: #333;
+            --color-text-light: #555;
+            --color-bg: #f5f5f5;
+            --color-white: #fff;
+            --color-accent: #FF9800;
+            --color-success: #4CAF50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .breadcrumb-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--color-text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%),
+                        url('hero-bg.jpg') center/cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            background: #f9f9f9;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f0f7ff;
+        }
+
+        .faq-question h4 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--color-primary);
+            flex: 1;
+            text-align: left;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--color-accent);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            color: var(--color-text-light);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .faq-answer ul {
+            margin: 10px 0 0 20px;
+            padding: 0;
+            color: var(--color-text-light);
+            font-size: 14px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .faq-answer strong {
+            color: var(--color-primary);
+        }
+
+        /* Ask Question Section */
+        .ask-question-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .ask-question-section h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .ask-question-section h2::after {
+            background-color: var(--color-accent);
+        }
+
+        .ask-question-section p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 3px rgba(255,152,0,0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,152,0,0.6);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-primary);
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary-dark);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.6);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #f0f7ff;
+            border-left: 4px solid var(--color-primary);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin: 20px auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--color-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-accent);
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 0;
+        }
+
+        .modal-form label {
+            color: var(--color-primary);
+        }
+
+        .modal-form input,
+        .modal-form textarea {
+            background: white;
+            color: var(--color-text);
+            border: 1px solid #ddd;
+        }
+
+        .modal-form input:focus,
+        .modal-form textarea:focus {
+            border-color: var(--color-primary);
+            background: #f9f9f9;
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .modal-footer .btn {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+        }
+
+        .btn-cancel {
+            background-color: #e0e0e0;
+            color: var(--color-text);
+            box-shadow: none;
+        }
+
+        .btn-cancel:hover {
+            background-color: #d0d0d0;
+            box-shadow: none;
+        }
+
+        .modal-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .modal-success.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .modal-success h3 {
+            color: var(--color-success);
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .modal-success p {
+            color: var(--color-text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--color-accent);
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .faq-question h4 {
+                font-size: 14px;
+            }
+
+            .ask-question-section {
+                padding: 30px;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../styles/styles.css">
+
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-bar" id="topBar">
+        <div class="container">
+            <div class="top-bar-item">
+                <span class="icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14" />
+    <path d="M11 4h2" />
+    <path d="M12 17v.01" />
+  </svg>
+</span>
+
+                <a href="tel:+79991234567" id="phoneLink">+7 (999) 123-45-67</a>
+
+            </div>
+            <div class="top-bar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock-12"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 0 0 9 9m9 -9a9 9 0 1 0 -18 0" /><path d="M12 7v5l.5 .5" /><path d="M18 15h2a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-1a1 1 0 0 0 -1 1v1a1 1 0 0 0 1 1h2" /><path d="M15 21v-6" /></svg>
+                <span>Ежедневно: 9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+
+      <div class="logo">
+        <a class="logo-link" href="../index.html">
+          <img class="logo-img" src="../assets/icons/logo-horizontal.svg" alt="ПрофЭлектрик Казань">
+          <div class="logo-text">
+            <span>ПрофЭлектрик</span>
+            <div class="city-name">Казань</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="uslugi-i-ceny.html">Услуги и цены</a>
+        <a href="../pages/about-company.html">О компании</a>
+        <a href="../pages/otzivy.html">Отзывы</a>
+        <a href="../pages/faq-section.html">Вопросы</a>
+        <a href="../pages/contact-info.html">Контакты</a>
+       
+      </nav>
+
+      <button class="btn-call" type="button" onclick="openModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" class="btn-call-icon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+          <path d="M15 6l2 2l4 -4" />
+        </svg>
+        Вызвать электрика
+      </button>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Открыть меню" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <span class="breadcrumb-item"><a href="../index.html">Главная</a></span>
+            <span class="breadcrumb-item"><span>/</span></span>
+            <span class="breadcrumb-item active">Вопросы</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Часто задаваемые вопросы</h1>
+            <p>Найдите ответы на вопросы о наших услугах или задайте свой</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- FAQ -->
+            <div class="faq-container">
+                <h2>Популярные вопросы</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Как быстро вы можете приехать?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Обычно мы выезжаем в течение 30-60 минут после звонка, в зависимости от загруженности. Для срочного вызова (ночью или в экстренных ситуациях) время может быть от 20 до 30 минут. Работаем 24/7!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Какая цена за вызов мастера?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Выезд мастера бесплатный!</strong> Вы платите только за выполненные работы. Мы озвучиваем точную смету ДО начала работ. Никаких скрытых платежей — прозрачное ценообразование.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Даёте ли вы гарантию на работы?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Да, даём гарантию до 3 лет</strong> на все выполненные работы! Если возникнут проблемы в гарантийный период, мы придём и исправим всё бесплатно. Ваше спокойствие — наш приоритет.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Сколько стоит установка розетки?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Стоимость установки одной розетки начинается <strong>от 190 рублей</strong>. Итоговая цена зависит от:</p>
+                        <ul>
+                            <li>Типа розетки (обычная, двойная, силовая)</li>
+                            <li>Сложности установки</li>
+                            <li>Нужны ли работы в стене</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Мастер уточнит всё на осмотре и даст точную смету.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Нужно ли согласовывать работы?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для квартир в доме согласие требуется редко. Если это новое строительство или большой объём работ, мы поможем со всеми согласованиями. Всегда уточним детали на консультации!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Какие материалы вы используете?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы используем только качественные материалы и кабели от проверенных производителей. Либо материал предоставляет клиент, либо мы закупаем с гарантией качества. Всё соответствует ГОСТу и нормам безопасности.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Можно ли вызвать электрика в выходной?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Да!</strong> Мы работаем по графику:</p>
+                        <ul>
+                            <li>Пн-Пт: 8:00 - 21:00</li>
+                            <li>Сб-Вс: 9:00 - 20:00</li>
+                            <li>24/7 - экстренные вызовы (взимается доплата 500 рублей)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Что входит в замену проводки?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Полная замена проводки включает:</p>
+                        <ul>
+                            <li>Демонтаж старой электропроводки</li>
+                            <li>Прокладка нового кабеля (обычно в кондуитах)</li>
+                            <li>Установка новых розеток и выключателей</li>
+                            <li>Монтаж автоматов и УЗО</li>
+                            <li>Пробивка и штробление стен (при необходимости)</li>
+                            <li>Тестирование и проверка системы</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Как долго выполняется монтаж люстры?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Обычно монтаж люстры занимает <strong>30-60 минут</strong>, в зависимости от типа и сложности подключения. Если нужно прокладывать кабель или менять проводку, время увеличится. Мастер озвучит примерное время на осмотре.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Работаете ли вы за пределами Казани?</h4>
+                        <div class="faq-toggle">⬇️</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Да!</strong> Мы обслуживаем не только Казань, но и другие города Татарстана:</p>
+                        <ul>
+                            <li>Казань (вся территория)</li>
+                            <li>Зеленодольск</li>
+                            <li>Болгар</li>
+                            <li>Елабуга</li>
+                            <li>Другие населённые пункты (по предварительной договорённости)</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Позвоните и уточните, можем ли мы приехать к вам.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ask Question Section -->
+            <div class="ask-question-section">
+                <h2>Не нашли ответ?</h2>
+                <p>Задайте ваш вопрос нашему специалисту прямо сейчас</p>
+
+                <div class="form-container">
+                    <form id="questionForm" onsubmit="handleQuestionSubmit(event)">
+                        <div class="form-group">
+                            <label for="qName">Ваше имя *</label>
+                            <input type="text" id="qName" required placeholder="Как вас зовут?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qPhone">Телефон *</label>
+                            <input type="tel" id="qPhone" required placeholder="+7 (999) 123-45-67">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qEmail">Email</label>
+                            <input type="email" id="qEmail" placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qCategory">Категория вопроса</label>
+                            <select id="qCategory">
+                                <option value="">-- Выберите --</option>
+                                <option value="Цены">Цены</option>
+                                <option value="Технический вопрос">Технический вопрос</option>
+                                <option value="Гарантия">Гарантия</option>
+                                <option value="График работы">График работы</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qText">Ваш вопрос *</label>
+                            <textarea id="qText" required placeholder="Напишите ваш вопрос подробно..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Отправить вопрос</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <p><strong>💡 Быстрый ответ:</strong> Если вопрос срочный, позвоните нам по телефону <strong>+7 (999) 123-45-67</strong>. Наши специалисты ответят на любой вопрос в течение 5 минут!</p>
+            </div>
+        </div>
+    </main>
+<!-- Modal Window -->
+    <div id="callModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Оставить заявку</h2>
+                <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
+                <div class="form-group">
+                    <label for="modalName">Ваше имя *</label>
+                    <input type="text" id="modalName" required placeholder="Ваше имя">
+                </div>
+
+                <div class="form-group">
+                    <label for="modalPhone">Телефон *</label>
+                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
+                </div>
+
+                <div class="form-group">
+                    <label for="modalService">Услуга *</label>
+                    <select id="modalService" required>
+                        <option value="">-- Выберите услугу --</option>
+                        <option value="Монтаж розеток">Монтаж розеток</option>
+                        <option value="Монтаж выключателей">Монтаж выключателей</option>
+                        <option value="Установка освещения">Установка освещения</option>
+                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+                        <option value="Монтаж автомата">Монтаж автомата</option>
+                        <option value="Аварийный вызов">Аварийный вызов</option>
+                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modalMessage">Опишите проблему</label>
+                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+            </form>
+
+            <div id="modalSuccess" class="modal-success">
+                <div class="success-icon">✅</div>
+                <h3>Заявка отправлена!</h3>
+                <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>⚡ ПрофЭлектрик</h4>
+                    <p>Казань</p>
+                    <p>Профессиональные услуги электрика в Казани с 2011 года. Гарантия качества до 3 лет.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="pages/uslugi-i-ceny.html">Цены</a></li>
+                        <li><a href="pages/uslugi-i-ceny.html">Установка розеток</a></li>
+                        <li><a href="pages/uslugi-i-ceny.html">Замена выключателей</a></li>
+                        <li><a href="pages/uslugi-i-ceny.html">Ремонт электропроводки</a></li>
+                        <li><a href="pages/uslugi-i-ceny.html">Монтаж светильников</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="tel:+79991234567">📞 +7 (999) 123-45-67</a></li>
+                        <li><a href="mailto:info@profelectrik.ru">📧 info@profelectrik.ru</a></li>
+                        <li>⏰ Пн-Пт: 8:00-21:00</li>
+                        <li>⏰ Сб-Вс: 9:00-20:00</li>
+                        <li><strong>🚨 24/7 Выезд</strong></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная страница</a></li>
+                        <li><a href="pages/uslugi-i-ceny.html">Услуги и цены</a></li>
+                        <li><a href="pages/o-kompanii.html">О компании</a></li>
+                        <li><a href="pages/otzyvy.html">Отзывы</a></li>
+                        <li><a href="pages/kontakty.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ПрофЭлектрик Казань. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="includes.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+
+            // Закрываем все открытые FAQ
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Открываем выбранный FAQ (если он был закрыт)
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        function handleQuestionSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('qName').value,
+                phone: document.getElementById('qPhone').value,
+                email: document.getElementById('qEmail').value,
+                category: document.getElementById('qCategory').value,
+                text: document.getElementById('qText').value
+            };
+            
+            console.log('Вопрос отправлен:', formData);
+            alert('Спасибо за вопрос! Ответ будет отправлен на ваш номер телефона или email в течение 1-2 часов.');
+            
+            event.target.reset();
+        }
+    </script>
+  <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== Mobile menu toggle =====
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.remove('active'));
+                });
+            }
+
+            // ===== Sticky header offset =====
+            const topBar = document.getElementById('topBar');
+            const header = document.querySelector('header');
+
+            if (header) {
+                const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+
+                header.style.top = `${getTopbarHeight()}px`;
+
+                let lastScrollTop = 0;
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollTop > lastScrollTop) {
+                        header.style.top = '0px';
+                        header.style.zIndex = '102';
+                    } else {
+                        header.style.top = `${getTopbarHeight()}px`;
+                        header.style.zIndex = '100';
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+
+                window.addEventListener('resize', () => {
+                    header.style.top = `${getTopbarHeight()}px`;
+                });
+            }
+
+            // ===== Copy phone to clipboard =====
+            const phoneLink = document.getElementById('phoneLink');
+            if (phoneLink) {
+                const originalText = phoneLink.textContent;
+
+                phoneLink.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+
+                    try {
+                        await navigator.clipboard.writeText(phoneToCopy);
+                        phoneLink.textContent = 'Скопировано!';
+                        setTimeout(() => (phoneLink.textContent = originalText), 1200);
+                    } catch (err) {
+                        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+                    }
+                });
+            }
+        });
+
+        // ===== Modal functionality =====
+        const modal = document.getElementById('callModal');
+        const modalForm = document.getElementById('modalForm');
+        const modalSuccess = document.getElementById('modalSuccess');
+
+        window.openModal = function () {
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (modalForm) modalForm.style.display = 'block';
+            if (modalSuccess) modalSuccess.classList.remove('show');
+        };
+
+        window.closeModal = function () {
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if (modalForm) modalForm.reset();
+        };
+
+        window.handleModalSubmit = function (event) {
+            event.preventDefault();
+
+            if (modalForm) modalForm.style.display = 'none';
+            if (modalSuccess) modalSuccess.classList.add('show');
+
+            setTimeout(window.closeModal, 3000);
+        };
+
+        // Закрытие по клику на фон
+        window.addEventListener('click', (event) => {
+            if (modal && event.target === modal) window.closeModal();
+        });
+    </script>
+
+</body>
+</html>

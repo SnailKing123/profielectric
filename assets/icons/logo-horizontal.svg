@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="ПрофЭлектрик логотип знак">
+  <defs>
+    <style>
+      .stroke { fill: none; stroke: #FF9900; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+      .fill { fill: #FF9900; }
+    </style>
+  </defs>
+  <rect x="24" y="24" width="208" height="208" rx="48" class="stroke"/>
+   <path class="fill" d="M142 68 L104 132 H130 L114 188 L170 116 H144 Z"/>
+</svg>
