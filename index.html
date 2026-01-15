@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электрик в Казани - Профессиональные услуги</title>
+    <style>  	
+ /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), 
+                        url('assets/images/hero-bg.jpg') center/cover;
+            color: white;
+            padding: 170px 0 170px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  </style>
+ <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-bar" id="topBar">
+        <div class="container">
+            <div class="top-bar-item">
+                <span class="icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14" />
+    <path d="M11 4h2" />
+    <path d="M12 17v.01" />
+  </svg>
+</span>
+
+                <a href="tel:+79991234567" id="phoneLink">+7 (999) 123-45-67</a>
+
+            </div>
+            <div class="top-bar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock-12"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 0 0 9 9m9 -9a9 9 0 1 0 -18 0" /><path d="M12 7v5l.5 .5" /><path d="M18 15h2a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-1a1 1 0 0 0 -1 1v1a1 1 0 0 0 1 1h2" /><path d="M15 21v-6" /></svg>
+                <span>Ежедневно: 9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+
+      <div class="logo">
+        <a class="logo-link" href="index.html">
+          <img class="logo-img" src="assets/icons/logo-horizontal.svg" alt="ПрофЭлектрик Казань">
+          <div class="logo-text">
+            <span>ПрофЭлектрик</span>
+            <div class="city-name">Казань</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="pages/uslugi-i-ceny.html">Услуги и цены</a>
+        <a href="pages/about-company.html">О компании</a>
+        <a href="pages/otzivy.html">Отзывы</a>
+        <a href="pages/faq-section.html">Вопросы</a>
+        <a href="pages/contact-info.html">Контакты</a>
+      
+      </nav>
+
+      <button class="btn-call" type="button" onclick="openModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" class="btn-call-icon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+          <path d="M15 6l2 2l4 -4" />
+        </svg>
+        Вызвать электрика
+      </button>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Открыть меню" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Профессиональные услуги электрика в Казани</h1>
+            <p>
+	    <a href="pages/about-company.html" class="hero-link">Опыт работы более 10 лет</a> •
+            <a href="pages/faq-section.html" class="hero-link"> Быстрый выезд
+	    <br>
+	    <a href="pages/contact-info.html" class="hero-link">Работаем по всей Казани и области
+	    </p>
+            <button class="btn" onclick="openModal()">Заказать услугу</button>
+        </div>
+    </section>
+
+    <!-- Quick Services -->
+    <section class="quick-services">
+        <div class="container">
+            <div class="quick-service-item" onclick="openModal()">
+                <div class="quick-service-icon">
+                                
+<svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
+        stroke="#fff" stroke-width="1.5"/>
+  <circle cx="12" cy="12" r="6" stroke="#fff" stroke-width="1.5"/>
+  <path opacity="0.5" d="M12 18.0001V16.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  <path opacity="0.5" d="M12 7.5V6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="14" cy="12" r="1" fill="#fff"/>
+  <circle cx="10" cy="12" r="1" fill="#fff"/>
+</svg>
+                            </div>
+                <div class="quick-service-name">Монтаж розеток</div>
+            </div>
+            <a href="pages/uslugi/zamena-vikluchatelya.html" class="quick-service-item">
+ 		<div class="quick-service-icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="54" height="54" viewBox="0 0 512 512"
+     fill="currentColor" aria-hidden="true">
+  <path d="m405.943 0h-299.886c-58.48 0-106.057 47.577-106.057 106.057v299.887c0 58.479 47.577 106.056 106.057 106.056h299.887c58.479 0 106.056-47.577 106.056-106.057v-299.886c0-58.48-47.577-106.057-106.057-106.057zm98.057 405.943c0 54.069-43.988 98.057-98.057 98.057h-299.886c-54.069 0-98.057-43.988-98.057-98.057v-299.886c0-54.069 43.988-98.057 98.057-98.057h299.887c54.068 0 98.056 43.988 98.056 98.057z"/>
+  <path d="m385.377 44h-258.754c-45.559 0-82.623 37.064-82.623 82.623v258.755c0 45.558 37.064 82.622 82.623 82.622h258.754c45.559 0 82.623-37.064 82.623-82.623v-258.754c0-45.559-37.064-82.623-82.623-82.623zm-333.377 341.377v-258.754c0-41.147 33.476-74.623 74.623-74.623h125.377v408h-125.377c-41.147 0-74.623-33.476-74.623-74.623zm408 0c0 41.147-33.476 74.623-74.623 74.623h-125.377v-408h125.377c41.147 0 74.623 33.476 74.623 74.623z"/>
+  <path d="m371.472 364h-38.943c-9.113 0-16.528 7.415-16.528 16.528v6.943c0 9.114 7.415 16.528 16.528 16.528h38.943c9.113 0 16.528-7.415 16.528-16.528v-6.943c0-9.113-7.415-16.528-16.528-16.528zm8.528 23.472c0 4.703-3.826 8.528-8.528 8.528h-38.943c-4.702 0-8.528-3.826-8.528-8.528v-6.943c0-4.703 3.826-8.528 8.528-8.528h38.943c4.702 0 8.528 3.826 8.528 8.528z"/>
+  <path d="m179.472 364h-38.943c-9.113 0-16.528 7.415-16.528 16.528v6.943c0 9.114 7.415 16.528 16.528 16.528h38.943c9.113 0 16.528-7.415 16.528-16.528v-6.943c0-9.113-7.415-16.528-16.528-16.528zm8.528 23.472c0 4.703-3.826 8.528-8.528 8.528h-38.943c-4.702 0-8.528-3.826-8.528-8.528v-6.943c0-4.703 3.826-8.528 8.528-8.528h38.943c4.702 0 8.528 3.826 8.528 8.528z"/>
+</svg>
+</div>
+  		<div class="quick-service-name">Монтаж выключателей</div>
+	    </a>
+            <div class="quick-service-item" onclick="openModal()">
+                <div class="quick-service-icon">
+                                
+<svg width="60px" height="60px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet"><path d="M32 2C20.973 2 12 9.889 12 19.586c0 5.13 3.368 10.412 6.621 15.516c2.803 4.393 5.48 8.586 6.316 12.898h14.125c.838-4.313 3.512-8.506 6.314-12.898C48.631 29.998 52 24.716 52 19.586C52 9.889 43.027 2 32 2m0 27.674c1.932 2.085 3.752 2.705 4.584 2.889c-.125.555-.238 1.097-.369 1.631c-.246 1.092-.486 2.156-.719 3.178a723.122 723.122 0 0 0-1.895 8.629h-3.203a787.762 787.762 0 0 0-1.895-8.629l-.721-3.178c-.131-.534-.244-1.076-.367-1.631c.833-.184 2.653-.804 4.585-2.889m-.539-2.183c-.191-.413-.26-.835-.064-1.146c.164-.247.381-.388.604-.388s.438.141.604.388c.195.311.127.732-.064 1.146c-.141.292-.334.57-.541.839a4.66 4.66 0 0 1-.539-.839m12.23 6.534c-2.583 4.049-5.039 7.898-6.203 11.975h-3.246a801.908 801.908 0 0 0 2.113-8.465c.246-1.021.506-2.078.771-3.168c.148-.58.279-1.178.424-1.773c.756-.051 1.479-.287 2.043-.804c.578-.569.879-1.313.744-2.107c-.061-.38-.346-.872-.896-1.04a1.397 1.397 0 0 0-.832-.019a1.572 1.572 0 0 0-.598.396c-.533.592-.727 1.183-.945 1.769c-.102.295-.186.59-.266.881c0 0-.85.065-2.668-1.158c-1.01-.679-1.301-1.17-1.594-1.495c.316-.351.619-.736.854-1.203c.125-.261.23-.544.266-.862s-.023-.678-.205-.988a1.749 1.749 0 0 0-.865-.76c-.182-.065-.385-.096-.588-.096s-.408.03-.588.096a1.758 1.758 0 0 0-.867.76c-.182.311-.24.67-.205.988a2.7 2.7 0 0 0 .268.862c.234.467.537.853.854 1.203c-.293.325-.586.816-1.596 1.495c-1.818 1.224-2.668 1.158-2.668 1.158a14.153 14.153 0 0 0-.264-.881c-.221-.586-.412-1.177-.945-1.769a1.565 1.565 0 0 0-.598-.396a1.397 1.397 0 0 0-.832.019c-.553.168-.836.66-.896 1.04c-.137.794.166 1.538.744 2.107c.566.517 1.287.753 2.043.804c.143.596.273 1.193.424 1.773l.771 3.168A834.101 834.101 0 0 0 29.758 46h-3.246c-1.162-4.073-3.619-7.922-6.209-11.979C17.204 29.158 14 24.13 14 19.586C14 10.992 22.074 4 32 4c9.925 0 18 6.992 18 15.586c0 4.546-3.207 9.575-6.309 14.439m-5.892-2.361c.059-.205.119-.413.189-.613c.189-.527.43-1.1.758-1.443c.078-.088.158-.123.199-.146c0 .004.098-.012.16.019c.111.028.217.143.258.364c.08.428-.123.979-.49 1.324c-.258.245-.656.417-1.074.495m-11.6 0c-.418-.078-.816-.25-1.072-.496c-.369-.345-.57-.896-.49-1.324c.041-.222.146-.336.258-.364c.063-.03.16-.015.16-.019c.039.023.121.059.195.146c.33.344.57.916.76 1.443c.07.201.131.409.189.614" fill="#fff"></path><path d="M26.52 49.557h-1v3.6h.768v3.201h.768v3.201h1.286C28.947 60.988 30.347 62 32 62c1.652 0 3.051-1.012 3.658-2.443h1.327v-3.221l.112-.041l.655-.24v-2.923l.065-.021l.701-.22v-3.335H26.52z" fill="#fff"></path></svg>
+                            </div>
+                <div class="quick-service-name">Установка освещения</div>
+            </div>
+            <div class="quick-service-item" onclick="openModal()">
+                <div class="quick-service-icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="64" height="64" viewBox="0 0 512 512"
+     fill="none" aria-hidden="true">
+  <path fill="currentColor" d="M501.333,458.664h-32v-21.333h32c5.888,0,10.667-4.779,10.667-10.667c0-5.888-4.779-10.667-10.667-10.667h-32v-10.667
+c0-5.888-4.779-10.667-10.667-10.667H416c-25.749,0-47.296,18.347-52.245,42.667H21.333v-42.667h53.333H160h85.333h85.333
+c5.888,0,10.667-4.779,10.667-10.667V181.331h32c0.128,0,0.277,0,0.427,0c5.888,0,10.667-4.779,10.667-10.667
+c0-4.075-2.283-7.637-5.675-9.429L209.685,13.309c-4.011-3.52-10.027-3.52-14.037,0L24.981,162.643
+c-3.349,2.923-4.544,7.616-2.965,11.776c1.557,4.16,5.547,6.912,9.984,6.912h32v192H10.667C4.779,373.331,0,378.109,0,383.997v64
+c0,5.888,4.779,10.667,10.667,10.667h353.088c4.949,24.32,26.496,42.667,52.245,42.667h42.667
+c5.888,0,10.667-4.779,10.667-10.667v-10.667h32c5.888,0,10.667-4.779,10.667-10.667C512,463.443,507.221,458.664,501.333,458.664z
+M234.667,373.331h-64V266.664h64V373.331z M320,373.331h-64V255.997c0-5.888-4.779-10.667-10.667-10.667H160
+c-5.888,0-10.667,4.779-10.667,10.667v117.333h-64v-192H320V373.331z M60.395,159.997l142.272-124.48l142.272,124.48h-14.272h-256H60.395z
+M448,479.997h-32c-17.643,0-32-14.357-32-32s14.357-32,32-32h32V479.997z"/>
+</svg>
+</div>
+                <div class="quick-service-name">Монтаж электропроводки</div>
+            </div>
+            <div class="quick-service-item" onclick="openModal()">
+                <div class="quick-service-icon"><svg xmlns="http://www.w3.org/2000/svg"
+     width="60" height="60" viewBox="0 0 60 60"
+     fill="none" aria-hidden="true">
+  <path fill="currentColor" d="m9.12 55h7.08 18.21 7.08c.55 0 1-.45 1-1v-9.43c0-5.2-4.23-9.44-9.44-9.44h-2.91c2.82-2.35 4.71-6.39 4.71-9.95v-2.49h2.11c.55 0 1-.45 1-1v-3.4c0-.55-.45-1-1-1h-.98c-.36-3.82-2.75-7.2-6.22-8.84l.38-2.29c.05-.29-.03-.59-.22-.81-.19-.22-.47-.35-.76-.35h-8.09c-.29 0-.57.13-.76.35s-.27.52-.22.81l.38 2.29c-3.47 1.65-5.86 5.03-6.21 8.84h-.98c-.55 0-1 .45-1 1v3.4c0 .55.45 1 1 1h2.12v2.49c0 3.56 1.89 7.6 4.71 9.95h-2.53c-5.2 0-9.44 4.23-9.44 9.44v9.43c-.02.55.43 1 .98 1zm8.08-2v-6.5h16.21v6.5zm23.29-8.43v8.43h-5.08v-7.5c0-.55-.45-1-1-1h-1.62v-7.37h.26c4.11.01 7.44 3.34 7.44 7.44zm-26.22-25.28h.94c.55 0 1-.45 1-1 0-3.25 1.81-6.24 4.61-7.79l.46 2.74c.09.54.61.91 1.15.82s.91-.61.82-1.15l-1-5.91h5.73l-.99 5.91c-.09.54.28 1.06.82 1.15.06.01.11.01.17.01.48 0 .9-.35.99-.83l.46-2.74c2.79 1.55 4.61 4.54 4.61 7.79 0 .55.45 1 1 1h.93v1.4h-21.7zm3.11 5.9v-2.49h15.46v2.49c0 4.39-3.64 9.95-7.73 9.95s-7.73-5.57-7.73-9.95zm13.41 11.95v7.37h-10.97v-7.37zm-20.67 7.43c0-4.1 3.34-7.44 7.44-7.44h.26v7.37h-1.62c-.55 0-1 .45-1 1v7.5h-5.08z"/>
+  <path fill="currentColor" d="m47.44 15.53c0-.45-.31-.85-.74-.97-.44-.12-.9.08-1.13.47l-6.28 11.01c-.18.31-.17.69 0 1 .18.31.51.5.86.5h3.14l-.12 7.2c-.01.46.3.86.74.98.09.02.18.04.26.04.35 0 .69-.19.87-.51l6.7-11.85c.18-.31.17-.69-.01-1s-.51-.5-.86-.5h-3.44v-6.37zm1.72 8.37-3.92 6.93.07-4.28c0-.27-.1-.53-.29-.72s-.44-.3-.71-.3h-2.43l3.55-6.23v3.6c0 .55.45 1 1 1z"/>
+</svg>
+</div>
+                <div class="quick-service-name">Усуги электрика</div>
+            </div>
+            <div class="quick-service-item" onclick="openModal()">
+                <div class="quick-service-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+     width="60" height="60" viewBox="0 0 63 63"
+     fill="none" aria-hidden="true">
+  <g>
+    <g>
+      <path d="M61.501,58.085h-60c-0.532,0-1.024-0.281-1.293-0.739c-0.27-0.457-0.277-1.023-0.019-1.488L27.042,7.453
+c0.02-0.037,0.042-0.072,0.065-0.107c1.02-1.522,2.711-2.43,4.526-2.43c1.744,0,3.297,0.825,4.261,2.265
+c0.024,0.035,0.046,0.072,0.067,0.109l26.852,48.57c0.257,0.464,0.249,1.03-0.02,1.487C62.523,57.805,62.032,58.085,61.501,58.085z
+M4.049,55.085h54.909L33.37,8.805c-0.543-0.772-1.318-0.889-1.737-0.889c-0.794,0-1.539,0.393-2.002,1.054L4.049,55.085z"
+            fill="currentColor"/>
+      <path d="M36.8,30.437l-5.557,1.954l2.979-9.306h-4.674L26.24,39.213l5.567-2.487l-0.889,6.39l-2.178-3.182
+l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
+            fill="currentColor"/>
+    </g>
+  </g>
+</svg>
+</div>
+                <div class="quick-service-name">Аварийный вызов</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2><a href="pages/about-company.html" class="hero-link">О нашей компании</a></h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h4>✅ Качество работ</h4>
+                        <p>Все работы выполняются в соответствии с ГОСТами и ПУЭ (Правила устройства электроустановок)</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>🔧 Опыт и профессионализм</h4>
+                        <p>Мастера постоянно повышают квалификацию и знают все нюансы электротехнических операций</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>⚡ Полный спектр услуг</h4>
+                        <p>От мелкого ремонта до полного электромонтажа объектов любой сложности</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>🛡️ Безопасность</h4>
+                        <p>Услуги предоставляются с соблюдением всех требований техники безопасности</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>📋 Гарантия</h4>
+                        <p>На все выполненные работы предоставляется гарантия до 3 лет</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>🚀 Быстрый выезд</h4>
+                        <p>Экстренный выезд при аварийных ситуациях в короткие сроки</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h2><a href="pages/uslugi-i-ceny.html" class="hero-link">Услуги электрика</a></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3>Установка розеток</h3>
+                        <p>Установка розеток любых типов с соблюдением норм безопасности</p>
+                        <div class="price">от 190 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💡</div>
+                        <h3>Установка выключателей</h3>
+                        <p>Монтаж выключателей, включая диммеры и сенсорные выключатели</p>
+                        <div class="price">от 190 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔔</div>
+                        <h3>Установка звонков</h3>
+                        <p>Монтаж электрических звонков с проводкой</p>
+                        <div class="price">от 200 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💫</div>
+                        <h3>Люстры и светильники</h3>
+                        <p>Профессиональная установка и подключение осветительных приборов</p>
+                        <div class="price">от 380 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔥</div>
+                        <h3>Ремонт проводки</h3>
+                        <p>Диагностика и устранение проблем с электропроводкой</p>
+                        <div class="price">от 490 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📐</div>
+                        <h3>Прокладка кабеля</h3>
+                        <p>Прокладка новых кабелей и проводки под ключ</p>
+                        <div class="price">от 30 ₽/п.м.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prices Section -->
+        <section id="prices">
+            <div class="container">
+                <h2>Прайс-лист услуг</h2>
+                <div class="prices-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Стоимость</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Установка розеток</td>
+                                <td>от 190 ₽</td>
+                                <td>Монтаж одной розетки</td>
+                            </tr>
+                            <tr>
+                                <td>Установка выключателей</td>
+                                <td>от 190 ₽</td>
+                                <td>Монтаж одного выключателя</td>
+                            </tr>
+                            <tr>
+                                <td>Установка звонка</td>
+                                <td>от 200 ₽</td>
+                                <td>Полная установка со звонком</td>
+                            </tr>
+                            <tr>
+                                <td>Установка люстр, светильников</td>
+                                <td>от 380 ₽</td>
+                                <td>Монтаж и подключение</td>
+                            </tr>
+                            <tr>
+                                <td>Устранение обрыва, короткого замыкания</td>
+                                <td>от 490 ₽</td>
+                                <td>Диагностика и ремонт</td>
+                            </tr>
+                            <tr>
+                                <td>Ремонт электропроводки</td>
+                                <td>от 490 ₽</td>
+                                <td>Полная диагностика и ремонт</td>
+                            </tr>
+                            <tr>
+                                <td>Прокладка кабеля</td>
+                                <td>от 30 ₽/п.м.</td>
+                                <td>За 1 погонный метр</td>
+                            </tr>
+                            <tr>
+                                <td>Штробление стен</td>
+                                <td>от 400 ₽/п.м.</td>
+                                <td>За 1 погонный метр</td>
+                            </tr>
+                            <tr>
+                                <td>Монтаж счетчика электроэнергии</td>
+                                <td>от 400 ₽</td>
+                                <td>Полная установка</td>
+                            </tr>
+                            <tr>
+                                <td>Установка автоматов, УЗО</td>
+                                <td>от 250 ₽</td>
+                                <td>За один прибор</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--color-text-light); font-size: 14px;">
+                    * Точная стоимость определяется после консультации и оценки объема работ. Предоставляем скидки при больших объемах.
+                </p>
+            </div>
+        </section>
+
+<!-- Этапы работы с нами -->
+<section class="work-steps" id="work-steps">
+  <div class="container">
+    <h2>Этапы работы с нами</h2>
+    <p class="steps-subtitle">Просто, прозрачно и без лишних сложностей — от заявки до готового результата.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-icon">📞</div>
+        <h3>Заявка</h3>
+        <p>Позвоните или оставьте заявку на сайте. Уточним адрес, задачу и удобное время.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">🧰</div>
+        <h3>Выезд мастера</h3>
+        <p>Мастер приезжает в назначенное время, проводит осмотр и диагностику, отвечает на вопросы.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">🧾</div>
+        <h3>Смета и согласование</h3>
+        <p>Озвучим стоимость и сроки до начала работ. Никаких скрытых платежей.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-icon">⚡</div>
+        <h3>Выполнение работ</h3>
+        <p>Выполняем электромонтаж аккуратно и безопасно, соблюдая нормы и технику безопасности.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-icon">✅</div>
+        <h3>Проверка и сдача</h3>
+        <p>Проверяем результат, демонстрируем работу, убираем рабочее место.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-icon">🛡️</div>
+        <h3>Гарантия</h3>
+        <p>Даем гарантию на выполненные работы. Если возникнут вопросы — поможем.</p>
+      </div>
+    </div>
+
+    <div class="steps-cta">
+      <button class="btn btn-secondary" onclick="openModal()">☎️ Вызвать электрика</button>
+    </div>
+  </div>
+</section>
+
+
+
+        <!-- Contact Form Section -->
+        <section class="form-section" id="contact">
+            <div class="container">
+                <h2 style="color: var(--color-primary);">Заказать услугу</h2>
+                <div class="form-container">
+                    <div class="success-message" id="successMessage">
+                        ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+                    </div>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required placeholder="Иван Петров">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Услуга *</label>
+                            <select id="service" name="service" required>
+                                <option value="">-- Выберите услугу --</option>
+                                <option value="Установка розеток">Установка розеток</option>
+                                <option value="Установка выключателей">Установка выключателей</option>
+                                <option value="Установка люстр и светильников">Установка люстр и светильников</option>
+                                <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+                                <option value="Прокладка кабеля">Прокладка кабеля</option>
+                                <option value="Монтаж счетчика">Монтаж счетчика</option>
+                                <option value="Экстренный ремонт">Экстренный ремонт</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Адрес работ в Казани *</label>
+                            <input type="text" id="address" name="address" required placeholder="улица, дом, кв.">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Описание проблемы</label>
+                            <textarea id="message" name="message" placeholder="Опишите вашу проблему подробнее..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>⚡ ПрофЭлектрик</h4>
+                    <p>Казань</p>
+                    <p>Профессиональные услуги электрика в Казани с 2011 года. Гарантия качества до 3 лет.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#services">Цены</a></li>
+                        <li><a href="#services">Установка розеток и выключателей</a></li>
+                        <li><a href="#services">Ремонт электропроводки</a></li>
+                        <li><a href="#services">Монтаж светильников</a></li>
+                        <li><a href="#services">Прокладка кабелей</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="tel:+79991234567">📞 +7 (999) 123-45-67</a></li>
+                        <li><a href="mailto:info@profelectrik.ru">📧 info@profelectrik.ru</a></li>
+                        <li><a href="#" onclick="openModal()">☎️ Обратный звонок</a></li>
+                        <li><strong>Режим:</strong> Пн-Пт: 8:00-21:00 | Сб-Вс: 9:00-20:00</li>
+                        <li><strong>Область:</strong> Казань и Татарстан</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#services">Услуги и цены</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Вконтакте</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ПрофЭлектрик Казань. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div id="callModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Оставить заявку</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
+                <div class="form-group">
+                    <label for="modalName">Ваше имя *</label>
+                    <input type="text" id="modalName" required placeholder="Ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="modalPhone">Телефон *</label>
+                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label for="modalService">Услуга *</label>
+                    <select id="modalService" required>
+                        <option value="">-- Выберите услугу --</option>
+                        <option value="Монтаж розеток">Монтаж розеток</option>
+                        <option value="Монтаж выключателей">Монтаж выключателей</option>
+                        <option value="Установка освещения">Установка освещения</option>
+                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+                        <option value="Монтаж автомата">Монтаж автомата</option>
+                        <option value="Аварийный вызов">Аварийный вызов</option>
+                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalMessage">Опишите проблему</label>
+                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+            </form>
+
+            <div id="modalSuccess" class="modal-success">
+                <div class="success-icon">✅</div>
+                <h3>Заявка отправлена!</h3>
+                <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ===== Mobile menu toggle =====
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => navMenu.classList.remove('active'));
+    });
+  }
+
+  // ===== Sticky header offset (auto) =====
+  const topBar = document.getElementById('topBar');
+  const header = document.querySelector('header');
+
+  if (header) {
+    const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+
+    // начальная установка (важно при загрузке)
+    header.style.top = `${getTopbarHeight()}px`;
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        // вниз — перекрываем top-bar
+        header.style.top = '0px';
+        header.style.zIndex = '102';
+      } else {
+        // вверх — возвращаем под top-bar (но уже по реальной высоте)
+        header.style.top = `${getTopbarHeight()}px`;
+        header.style.zIndex = '100';
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // если top-bar меняет высоту (перенос строк) при ресайзе
+    window.addEventListener('resize', () => {
+      header.style.top = `${getTopbarHeight()}px`;
+    });
+  }
+
+  // ===== Copy phone to clipboard =====
+  const phoneLink = document.getElementById('phoneLink');
+  if (phoneLink) {
+    const originalText = phoneLink.textContent;
+
+    phoneLink.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+
+      try {
+        await navigator.clipboard.writeText(phoneToCopy);
+        phoneLink.textContent = 'Скопировано!';
+        setTimeout(() => (phoneLink.textContent = originalText), 1200);
+      } catch (err) {
+        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+      }
+    });
+  }
+  // ===== Modal functionality (for onclick="openModal()") =====
+  const modal = document.getElementById('callModal');
+  const modalForm = document.getElementById('modalForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+
+  window.openModal = function () {
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (modalForm) modalForm.style.display = 'block';
+    if (modalSuccess) modalSuccess.classList.remove('show');
+  };
+
+  window.closeModal = function () {
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    if (modalForm) modalForm.reset();
+  };
+
+  window.handleModalSubmit = function (event) {
+    event.preventDefault();
+
+    // тут можешь собрать данные формы, если нужно
+    // const formData = { ... }
+
+    if (modalForm) modalForm.style.display = 'none';
+    if (modalSuccess) modalSuccess.classList.add('show');
+
+    setTimeout(window.closeModal, 3000);
+  };
+
+  // Закрытие по клику на фон
+  window.addEventListener('click', (event) => {
+    if (modal && event.target === modal) window.closeModal();
+  });
+
+});
+</script>
+
+
+</body>
+</html>
