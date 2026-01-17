@@ -467,7 +467,6 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
     </div>
   </div>
 </section>
-
 <script>
   (function () {
     const form = document.getElementById('contactForm');
@@ -620,28 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalForm) modalForm.reset();
   };
 
-  if (modalForm) {
-    modalForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const fd = new FormData(modalForm);
-
-      const res = await fetch(modalForm.action, {
-        method: modalForm.method || 'POST',
-        body: fd,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        modalForm.style.display = 'none';
-        if (modalSuccess) modalSuccess.classList.add('show');
-        setTimeout(window.closeModal, 3000);
-      } else {
-        alert('Не удалось отправить заявку. Попробуйте ещё раз.');
-      }
-    });
-  }
-
+  
   window.addEventListener('click', (event) => {
     if (modal && event.target === modal) window.closeModal();
   });
