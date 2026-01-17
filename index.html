@@ -529,21 +529,21 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
             
             <form id="modalForm">
 
-<input type="hidden" name="source" value="modal">
+  <input type="hidden" name="fi-text-source" value="modal">
 
   <div class="form-group">
     <label for="modalName">Ваше имя *</label>
-    <input type="text" id="modalName" name="name" required placeholder="Ваше имя">
+    <input type="text" id="modalName" name="fi-sender-firstName" required placeholder="Ваше имя">
   </div>
 
   <div class="form-group">
     <label for="modalPhone">Телефон *</label>
-    <input type="tel" id="modalPhone" name="phone" required placeholder="+7 (999) 123-45-67">
+    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="+7 (999) 123-45-67">
   </div>
 
   <div class="form-group">
     <label for="modalService">Услуга *</label>
-    <select id="modalService" name="service" required>
+    <select id="modalService" name="fi-select-service" required>
       <option value="">-- Выберите услугу --</option>
       <option value="Монтаж розеток">Монтаж розеток</option>
       <option value="Монтаж выключателей">Монтаж выключателей</option>
@@ -558,7 +558,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 
   <div class="form-group">
     <label for="modalMessage">Опишите проблему</label>
-    <textarea id="modalMessage" name="message" placeholder="Опишите вашу проблему..."></textarea>
+    <textarea id="modalMessage" name="fi-text-message" placeholder="Опишите вашу проблему..."></textarea>
   </div>
 
   <div class="modal-footer">
@@ -566,6 +566,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
     <button type="submit" class="btn">Отправить</button>
   </div>
 </form>
+
 
 
             <div id="modalSuccess" class="modal-success">
@@ -675,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const forminit = new Forminit();
 
   // ВАЖНО: сюда нужно поставить ваш FORM_ID из кабинета Forminit (не URL /f/...)
-  const FORM_ID = 'YOUR-FORM-ID';
+  const FORM_ID = '4d5ze1564fd';
 
   async function bind(formId) {
     const form = document.getElementById(formId);
