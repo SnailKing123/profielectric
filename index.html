@@ -577,16 +577,32 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         </div>
     </div>
 
-    <script>
+   <script src="https://forminit.com/sdk/v1/forminit.js"></script>
+
+<script>
 document.addEventListener('DOMContentLoaded', () => {
+  // ===== Elements =====
   const modal = document.getElementById('callModal');
   const modalForm = document.getElementById('modalForm');
   const modalSuccess = document.getElementById('modalSuccess');
 
+  const contactForm = document.getElementById('contactForm');
+  const pageSuccess = document.getElementById('successMessage');
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  const topBar = document.getElementById('topBar');
+  const header = document.querySelector('header');
+
+  const phoneLink = document.getElementById('phoneLink');
+
+  // ===== Modal open/close =====
   window.openModal = function () {
     if (!modal) return;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
     if (modalForm) modalForm.style.display = 'block';
     if (modalSuccess) modalSuccess.classList.remove('show');
   };
@@ -595,87 +611,79 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal) return;
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+
     if (modalForm) modalForm.reset();
+    if (modalForm) modalForm.style.display = 'block'; // важно после успешной отправки
+    if (modalSuccess) modalSuccess.classList.remove('show');
   };
 
-  
   window.addEventListener('click', (event) => {
     if (modal && event.target === modal) window.closeModal();
   });
-});
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // ===== Mobile menu toggle =====
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
+  // ===== Mobile menu toggle =====
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
 
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                });
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => navMenu.classList.remove('active'));
+    });
+  }
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => navMenu.classList.remove('active'));
-                });
-            }
+  // ===== Sticky header offset =====
+  if (header) {
+    const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
 
-            // ===== Sticky header offset =====
-            const topBar = document.getElementById('topBar');
-            const header = document.querySelector('header');
+    header.style.top = `${getTopbarHeight()}px`;
 
-            if (header) {
-                const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-                header.style.top = `${getTopbarHeight()}px`;
+      if (scrollTop > lastScrollTop) {
+        header.style.top = '0px';
+        header.style.zIndex = '102';
+      } else {
+        header.style.top = `${getTopbarHeight()}px`;
+        header.style.zIndex = '100';
+      }
 
-                let lastScrollTop = 0;
-                window.addEventListener('scroll', () => {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
 
-                    if (scrollTop > lastScrollTop) {
-                        header.style.top = '0px';
-                        header.style.zIndex = '102';
-                    } else {
-                        header.style.top = `${getTopbarHeight()}px`;
-                        header.style.zIndex = '100';
-                    }
+    window.addEventListener('resize', () => {
+      header.style.top = `${getTopbarHeight()}px`;
+    });
+  }
 
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                });
+  // ===== Copy phone to clipboard =====
+  if (phoneLink) {
+    const originalText = phoneLink.textContent;
 
-                window.addEventListener('resize', () => {
-                    header.style.top = `${getTopbarHeight()}px`;
-                });
-            }
+    phoneLink.addEventListener('click', async (e) => {
+      e.preventDefault();
 
-            // ===== Copy phone to clipboard =====
-            const phoneLink = document.getElementById('phoneLink');
-            if (phoneLink) {
-                const originalText = phoneLink.textContent;
+      const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
 
-                phoneLink.addEventListener('click', async (e) => {
-                    e.preventDefault();
+      try {
+        await navigator.clipboard.writeText(phoneToCopy);
+        phoneLink.textContent = 'Скопировано!';
+        setTimeout(() => (phoneLink.textContent = originalText), 1200);
+      } catch (err) {
+        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+      }
+    });
+  }
 
-                    const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+  // ===== Hide success on input (page form) =====
+  if (contactForm && pageSuccess) {
+    contactForm.addEventListener('input', () => (pageSuccess.style.display = 'none'));
+  }
 
-                    try {
-                        await navigator.clipboard.writeText(phoneToCopy);
-                        phoneLink.textContent = 'Скопировано!';
-                        setTimeout(() => (phoneLink.textContent = originalText), 1200);
-                    } catch (err) {
-                        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
-                    }
-                });
-            }
-        });
-
-            </script>
-<script src="https://forminit.com/sdk/v1/forminit.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const forminit = new Forminit();
-
-  // ВАЖНО: сюда нужно поставить ваш FORM_ID из кабинета Forminit (не URL /f/...)
+  // ===== Forminit submit =====
+  const client = new Forminit();
   const FORM_ID = '4d5ze1564fd';
 
   async function bind(formId) {
@@ -684,16 +692,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
 
-      const { error } = await forminit.submit(FORM_ID, formData);
+      // спрятать успех перед новой отправкой
+      if (pageSuccess) pageSuccess.style.display = 'none';
+      if (modalSuccess) modalSuccess.classList.remove('show');
+
+      const { error } = await client.submit(FORM_ID, new FormData(form));
       if (error) {
-        alert(error.message);
+        console.error(error);
         return;
       }
 
-      form.reset();
-      alert('Отправлено');
+      // успех: форма на странице
+      if (formId === 'contactForm') {
+        form.reset();
+        if (pageSuccess) {
+          pageSuccess.style.display = 'block';
+          setTimeout(() => (pageSuccess.style.display = 'none'), 5000);
+        }
+      }
+
+      // успех: форма в модалке
+      if (formId === 'modalForm') {
+        form.reset();
+        form.style.display = 'none';
+        if (modalSuccess) modalSuccess.classList.add('show');
+      }
     });
   }
 
