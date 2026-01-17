@@ -426,15 +426,22 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
       </div>
 
-      <form id="contactForm">
+      <form id="contactForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST">
+
 
   <!-- это поле можно убрать, но можно и оставить как текстовый блок -->
   <input type="hidden" name="fi-text-source" value="page">
 
   <div class="form-group">
-    <label for="name">Ваше имя *</label>
-    <input type="text" id="name" name="fi-sender-firstName" required placeholder="Иван Петров">
-  </div>
+  <label for="name">Ваше имя *</label>
+  <input type="text" id="name" name="fi-sender-firstName" required placeholder="Имя (буквами)">
+</div>
+
+<div class="form-group">
+  <label for="anyName">Как к вам обращаться? </label>
+  <input type="text" id="anyName" name="fi-text-anyName" placeholder="Например: 123 / @ник / ООО Ромашка">
+</div>
+
 
   <div class="form-group">
     <label for="phone">Телефон *</label>
@@ -527,14 +534,21 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
-            <form id="modalForm">
+            <form id="modalForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST">
+
 
   <input type="hidden" name="fi-text-source" value="modal">
 
   <div class="form-group">
-    <label for="modalName">Ваше имя *</label>
-    <input type="text" id="modalName" name="fi-sender-firstName" required placeholder="Ваше имя">
-  </div>
+  <label for="modalName">Ваше имя *</label>
+  <input type="text" id="modalName" name="fi-sender-firstName" required placeholder="Имя (буквами)">
+</div>
+
+<div class="form-group">
+  <label for="modalAnyName">Как к вам обращаться?</label>
+  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Например: 123 / @ник / ООО Ромашка">
+</div>
+
 
   <div class="form-group">
     <label for="modalPhone">Телефон *</label>
@@ -577,8 +591,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         </div>
     </div>
 
-   <script src="https://forminit.com/sdk/v1/forminit.js"></script>
-
+  
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Elements =====
@@ -678,51 +691,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== Hide success on input (page form) =====
-  if (contactForm && pageSuccess) {
-    contactForm.addEventListener('input', () => (pageSuccess.style.display = 'none'));
-  }
+if (contactForm && pageSuccess) {
+  contactForm.addEventListener('input', () => (pageSuccess.style.display = 'none'));
+}
 
-  // ===== Forminit submit =====
-  const client = new Forminit();
-  const FORM_ID = '4d5ze1564fd';
+async function bind(formId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
 
-  async function bind(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    if (pageSuccess) pageSuccess.style.display = 'none';
+    if (modalSuccess) modalSuccess.classList.remove('show');
 
-      // спрятать успех перед новой отправкой
-      if (pageSuccess) pageSuccess.style.display = 'none';
-      if (modalSuccess) modalSuccess.classList.remove('show');
-
-      const { error } = await client.submit(FORM_ID, new FormData(form));
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      // успех: форма на странице
-      if (formId === 'contactForm') {
-        form.reset();
-        if (pageSuccess) {
-          pageSuccess.style.display = 'block';
-          setTimeout(() => (pageSuccess.style.display = 'none'), 5000);
-        }
-      }
-
-      // успех: форма в модалке
-      if (formId === 'modalForm') {
-        form.reset();
-        form.style.display = 'none';
-        if (modalSuccess) modalSuccess.classList.add('show');
-      }
+    const res = await fetch("https://lead-bot.nlkhrsv.workers.dev/", {
+      method: "POST",
+      body: new FormData(form),
     });
-  }
 
-  bind('contactForm');
-  bind('modalForm');
+    if (!res.ok) {
+      console.error("Worker error", await res.text());
+      return;
+    }
+
+    if (formId === 'contactForm') {
+      form.reset();
+      if (pageSuccess) {
+        pageSuccess.style.display = 'block';
+        setTimeout(() => (pageSuccess.style.display = 'none'), 5000);
+      }
+    }
+
+    if (formId === 'modalForm') {
+      form.reset();
+      form.style.display = 'none';
+      if (modalSuccess) modalSuccess.classList.add('show');
+    }
+  });
+}
+
+bind('contactForm');
+bind('modalForm');
+
 });
 </script>
 
