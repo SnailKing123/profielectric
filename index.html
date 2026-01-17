@@ -427,6 +427,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
       </div>
 
       <form id="contactForm" action="https://forminit.com/f/4d5ze1564fd" method="POST">
+<input type="hidden" name="source" value="page">
         <div class="form-group">
           <label for="name">Ваше имя *</label>
           <input type="text" id="name" name="name" required placeholder="Иван Петров">
@@ -467,37 +468,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
     </div>
   </div>
 </section>
-<script>
-  (function () {
-    const form = document.getElementById('contactForm');
-    const ok = document.getElementById('successMessage');
-    if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const fd = new FormData(form);
-
-      // защита от пустой отправки (на всякий случай)
-      if (![...fd.entries()].length) return;
-
-      const res = await fetch(form.action, {
-        method: form.method || 'POST',
-        body: fd,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        form.reset();
-        ok.style.display = 'block';
-        setTimeout(() => (ok.style.display = 'none'), 4000);
-      } else {
-        // если хотите, можно вывести текст ошибки
-        alert('Не удалось отправить заявку. Попробуйте ещё раз.');
-      }
-    });
-  })();
-</script>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -553,6 +524,8 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
             </div>
             
             <form id="modalForm" class="modal-form" action="https://forminit.com/f/4d5ze1564fd" method="POST">
+<input type="hidden" name="source" value="modal">
+
   <div class="form-group">
     <label for="modalName">Ваше имя *</label>
     <input type="text" id="modalName" name="name" required placeholder="Ваше имя">
