@@ -426,49 +426,49 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
       </div>
 
-      <form id="contactForm"
-      action="https://forminit.com/f/4d5ze1564fd"
-      method="POST"
-      enctype="multipart/form-data">
+      <form id="contactForm">
 
-<input type="hidden" name="source" value="page">
-        <div class="form-group">
-          <label for="name">Ваше имя *</label>
-          <input type="text" id="name" name="name" required placeholder="Иван Петров">
-        </div>
+  <!-- это поле можно убрать, но можно и оставить как текстовый блок -->
+  <input type="hidden" name="fi-text-source" value="page">
 
-        <div class="form-group">
-          <label for="phone">Телефон *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
-        </div>
+  <div class="form-group">
+    <label for="name">Ваше имя *</label>
+    <input type="text" id="name" name="fi-sender-firstName" required placeholder="Иван Петров">
+  </div>
 
-        <div class="form-group">
-          <label for="service">Услуга *</label>
-          <select id="service" name="service" required>
-            <option value="">-- Выберите услугу --</option>
-            <option value="Установка розеток">Установка розеток</option>
-            <option value="Установка выключателей">Установка выключателей</option>
-            <option value="Установка люстр и светильников">Установка люстр и светильников</option>
-            <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-            <option value="Прокладка кабеля">Прокладка кабеля</option>
-            <option value="Монтаж счетчика">Монтаж счетчика</option>
-            <option value="Экстренный ремонт">Экстренный ремонт</option>
-            <option value="Другое">Другое</option>
-          </select>
-        </div>
+  <div class="form-group">
+    <label for="phone">Телефон *</label>
+    <input type="tel" id="phone" name="fi-sender-phone" required placeholder="+7 (999) 123-45-67">
+  </div>
 
-        <div class="form-group">
-          <label for="address">Адрес работ в Казани *</label>
-          <input type="text" id="address" name="address" required placeholder="улица, дом, кв.">
-        </div>
+  <div class="form-group">
+    <label for="service">Услуга *</label>
+    <select id="service" name="fi-select-service" required>
+      <option value="">-- Выберите услугу --</option>
+      <option value="Установка розеток">Установка розеток</option>
+      <option value="Установка выключателей">Установка выключателей</option>
+      <option value="Установка люстр и светильников">Установка люстр и светильников</option>
+      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+      <option value="Прокладка кабеля">Прокладка кабеля</option>
+      <option value="Монтаж счетчика">Монтаж счетчика</option>
+      <option value="Экстренный ремонт">Экстренный ремонт</option>
+      <option value="Другое">Другое</option>
+    </select>
+  </div>
 
-        <div class="form-group">
-          <label for="message">Описание проблемы</label>
-          <textarea id="message" name="message" placeholder="Опишите вашу проблему подробнее..."></textarea>
-        </div>
+  <div class="form-group">
+    <label for="address">Адрес работ в Казани *</label>
+    <input type="text" id="address" name="fi-text-address" required placeholder="улица, дом, кв.">
+  </div>
 
-        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
-      </form>
+  <div class="form-group">
+    <label for="message">Описание проблемы</label>
+    <textarea id="message" name="fi-text-message" placeholder="Опишите вашу проблему подробнее..."></textarea>
+  </div>
+
+  <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+</form>
+
     </div>
   </div>
 </section>
@@ -527,11 +527,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
-            <form id="modalForm"
-      class="modal-form"
-      action="https://forminit.com/f/4d5ze1564fd"
-      method="POST"
-      enctype="multipart/form-data">
+            <form id="modalForm">
 
 <input type="hidden" name="source" value="modal">
 
@@ -673,6 +669,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
             </script>
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const forminit = new Forminit();
+
+  // ВАЖНО: сюда нужно поставить ваш FORM_ID из кабинета Forminit (не URL /f/...)
+  const FORM_ID = 'YOUR-FORM-ID';
+
+  async function bind(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      const { error } = await forminit.submit(FORM_ID, formData);
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      form.reset();
+      alert('Отправлено');
+    });
+  }
+
+  bind('contactForm');
+  bind('modalForm');
+});
+</script>
 
 
 </body>
