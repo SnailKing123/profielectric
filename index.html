@@ -416,53 +416,89 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 </section>
 
 
+<!-- Contact Form Section -->
+<section class="form-section" id="contact">
+  <div class="container">
+    <h2 style="color: var(--color-primary);">Заказать услугу</h2>
 
-        <!-- Contact Form Section -->
-        <section class="form-section" id="contact">
-            <div class="container">
-                <h2 style="color: var(--color-primary);">Заказать услугу</h2>
-                <div class="form-container">
-                    <div class="success-message" id="successMessage">
-                        ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
-                    </div>
-                    <form id="contactForm" onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <label for="name">Ваше имя *</label>
-                            <input type="text" id="name" name="name" required placeholder="Иван Петров">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Услуга *</label>
-                            <select id="service" name="service" required>
-                                <option value="">-- Выберите услугу --</option>
-                                <option value="Установка розеток">Установка розеток</option>
-                                <option value="Установка выключателей">Установка выключателей</option>
-                                <option value="Установка люстр и светильников">Установка люстр и светильников</option>
-                                <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-                                <option value="Прокладка кабеля">Прокладка кабеля</option>
-                                <option value="Монтаж счетчика">Монтаж счетчика</option>
-                                <option value="Экстренный ремонт">Экстренный ремонт</option>
-                                <option value="Другое">Другое</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Адрес работ в Казани *</label>
-                            <input type="text" id="address" name="address" required placeholder="улица, дом, кв.">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Описание проблемы</label>
-                            <textarea id="message" name="message" placeholder="Опишите вашу проблему подробнее..."></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="form-container">
+      <div class="success-message" id="successMessage" style="display:none;">
+        ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+      </div>
 
+      <form id="contactForm" action="https://forminit.com/f/4d5ze1564fd" method="POST">
+        <div class="form-group">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required placeholder="Иван Петров">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
+        </div>
+
+        <div class="form-group">
+          <label for="service">Услуга *</label>
+          <select id="service" name="service" required>
+            <option value="">-- Выберите услугу --</option>
+            <option value="Установка розеток">Установка розеток</option>
+            <option value="Установка выключателей">Установка выключателей</option>
+            <option value="Установка люстр и светильников">Установка люстр и светильников</option>
+            <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+            <option value="Прокладка кабеля">Прокладка кабеля</option>
+            <option value="Монтаж счетчика">Монтаж счетчика</option>
+            <option value="Экстренный ремонт">Экстренный ремонт</option>
+            <option value="Другое">Другое</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Адрес работ в Казани *</label>
+          <input type="text" id="address" name="address" required placeholder="улица, дом, кв.">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Описание проблемы</label>
+          <textarea id="message" name="message" placeholder="Опишите вашу проблему подробнее..."></textarea>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const form = document.getElementById('contactForm');
+    const ok = document.getElementById('successMessage');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fd = new FormData(form);
+
+      // защита от пустой отправки (на всякий случай)
+      if (![...fd.entries()].length) return;
+
+      const res = await fetch(form.action, {
+        method: form.method || 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        ok.style.display = 'block';
+        setTimeout(() => (ok.style.display = 'none'), 4000);
+      } else {
+        // если хотите, можно вывести текст ошибки
+        alert('Не удалось отправить заявку. Попробуйте ещё раз.');
+      }
+    });
+  })();
+</script>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -517,38 +553,43 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
-            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
-                <div class="form-group">
-                    <label for="modalName">Ваше имя *</label>
-                    <input type="text" id="modalName" required placeholder="Ваше имя">
-                </div>
-                <div class="form-group">
-                    <label for="modalPhone">Телефон *</label>
-                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
-                </div>
-                <div class="form-group">
-                    <label for="modalService">Услуга *</label>
-                    <select id="modalService" required>
-                        <option value="">-- Выберите услугу --</option>
-                        <option value="Монтаж розеток">Монтаж розеток</option>
-                        <option value="Монтаж выключателей">Монтаж выключателей</option>
-                        <option value="Установка освещения">Установка освещения</option>
-                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
-                        <option value="Монтаж автомата">Монтаж автомата</option>
-                        <option value="Аварийный вызов">Аварийный вызов</option>
-                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="modalMessage">Опишите проблему</label>
-                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
-                    <button type="submit" class="btn">Отправить</button>
-                </div>
-            </form>
+            <form id="modalForm" class="modal-form" action="https://forminit.com/f/4d5ze1564fd" method="POST">
+  <div class="form-group">
+    <label for="modalName">Ваше имя *</label>
+    <input type="text" id="modalName" name="name" required placeholder="Ваше имя">
+  </div>
+
+  <div class="form-group">
+    <label for="modalPhone">Телефон *</label>
+    <input type="tel" id="modalPhone" name="phone" required placeholder="+7 (999) 123-45-67">
+  </div>
+
+  <div class="form-group">
+    <label for="modalService">Услуга *</label>
+    <select id="modalService" name="service" required>
+      <option value="">-- Выберите услугу --</option>
+      <option value="Монтаж розеток">Монтаж розеток</option>
+      <option value="Монтаж выключателей">Монтаж выключателей</option>
+      <option value="Установка освещения">Установка освещения</option>
+      <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+      <option value="Монтаж автомата">Монтаж автомата</option>
+      <option value="Аварийный вызов">Аварийный вызов</option>
+      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+      <option value="Другое">Другое</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="modalMessage">Опишите проблему</label>
+    <textarea id="modalMessage" name="message" placeholder="Опишите вашу проблему..."></textarea>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
+    <button type="submit" class="btn">Отправить</button>
+  </div>
+</form>
+
 
             <div id="modalSuccess" class="modal-success">
                 <div class="success-icon">✅</div>
@@ -560,73 +601,6 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // ===== Mobile menu toggle =====
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => navMenu.classList.remove('active'));
-    });
-  }
-
-  // ===== Sticky header offset (auto) =====
-  const topBar = document.getElementById('topBar');
-  const header = document.querySelector('header');
-
-  if (header) {
-    const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
-
-    // начальная установка (важно при загрузке)
-    header.style.top = `${getTopbarHeight()}px`;
-
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        // вниз — перекрываем top-bar
-        header.style.top = '0px';
-        header.style.zIndex = '102';
-      } else {
-        // вверх — возвращаем под top-bar (но уже по реальной высоте)
-        header.style.top = `${getTopbarHeight()}px`;
-        header.style.zIndex = '100';
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-
-    // если top-bar меняет высоту (перенос строк) при ресайзе
-    window.addEventListener('resize', () => {
-      header.style.top = `${getTopbarHeight()}px`;
-    });
-  }
-
-  // ===== Copy phone to clipboard =====
-  const phoneLink = document.getElementById('phoneLink');
-  if (phoneLink) {
-    const originalText = phoneLink.textContent;
-
-    phoneLink.addEventListener('click', async (e) => {
-      e.preventDefault();
-
-      const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
-
-      try {
-        await navigator.clipboard.writeText(phoneToCopy);
-        phoneLink.textContent = 'Скопировано!';
-        setTimeout(() => (phoneLink.textContent = originalText), 1200);
-      } catch (err) {
-        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
-      }
-    });
-  }
-  // ===== Modal functionality (for onclick="openModal()") =====
   const modal = document.getElementById('callModal');
   const modalForm = document.getElementById('modalForm');
   const modalSuccess = document.getElementById('modalSuccess');
@@ -646,25 +620,99 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalForm) modalForm.reset();
   };
 
-  window.handleModalSubmit = function (event) {
-    event.preventDefault();
+  if (modalForm) {
+    modalForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-    // тут можешь собрать данные формы, если нужно
-    // const formData = { ... }
+      const fd = new FormData(modalForm);
 
-    if (modalForm) modalForm.style.display = 'none';
-    if (modalSuccess) modalSuccess.classList.add('show');
+      const res = await fetch(modalForm.action, {
+        method: modalForm.method || 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      });
 
-    setTimeout(window.closeModal, 3000);
-  };
+      if (res.ok) {
+        modalForm.style.display = 'none';
+        if (modalSuccess) modalSuccess.classList.add('show');
+        setTimeout(window.closeModal, 3000);
+      } else {
+        alert('Не удалось отправить заявку. Попробуйте ещё раз.');
+      }
+    });
+  }
 
-  // Закрытие по клику на фон
   window.addEventListener('click', (event) => {
     if (modal && event.target === modal) window.closeModal();
   });
-
 });
-</script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== Mobile menu toggle =====
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.remove('active'));
+                });
+            }
+
+            // ===== Sticky header offset =====
+            const topBar = document.getElementById('topBar');
+            const header = document.querySelector('header');
+
+            if (header) {
+                const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+
+                header.style.top = `${getTopbarHeight()}px`;
+
+                let lastScrollTop = 0;
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollTop > lastScrollTop) {
+                        header.style.top = '0px';
+                        header.style.zIndex = '102';
+                    } else {
+                        header.style.top = `${getTopbarHeight()}px`;
+                        header.style.zIndex = '100';
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+
+                window.addEventListener('resize', () => {
+                    header.style.top = `${getTopbarHeight()}px`;
+                });
+            }
+
+            // ===== Copy phone to clipboard =====
+            const phoneLink = document.getElementById('phoneLink');
+            if (phoneLink) {
+                const originalText = phoneLink.textContent;
+
+                phoneLink.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+
+                    try {
+                        await navigator.clipboard.writeText(phoneToCopy);
+                        phoneLink.textContent = 'Скопировано!';
+                        setTimeout(() => (phoneLink.textContent = originalText), 1200);
+                    } catch (err) {
+                        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+                    }
+                });
+            }
+        });
+
+            </script>
 
 
 </body>
