@@ -615,11 +615,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (modalForm) {
-    modalForm.addEventListener('submit', () => {
-      pendingModal = true;
-      if (modalSuccess) modalSuccess.classList.remove('show');
-    });
-  }
+  modalForm.addEventListener('submit', (e) => {
+    // если браузер не пропускает required-поля, submit вообще не произойдёт
+    // но на всякий случай проверим валидность формы
+    if (!modalForm.checkValidity()) return;
+
+    pendingModal = true;
+    modalSuccess?.classList.remove('show');
+
+    // Закрыть модалку сразу
+    window.closeModal();
+  });
+}
+
 
   if (iframe) {
     iframe.addEventListener('load', () => {
