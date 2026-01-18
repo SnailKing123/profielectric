@@ -599,6 +599,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const phoneLink = document.getElementById('phoneLink');
 
+  // ===== Show success after iframe gets server response =====
+  const iframe = document.getElementById('hiddenIframe');
+  let pendingContact = false;
+  let pendingModal = false;
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', () => {
+      pendingContact = true;
+      if (pageSuccess) pageSuccess.style.display = 'none';
+    });
+    contactForm.addEventListener('input', () => {
+      if (pageSuccess) pageSuccess.style.display = 'none';
+    });
+  }
+
+  if (modalForm) {
+    modalForm.addEventListener('submit', () => {
+      pendingModal = true;
+      if (modalSuccess) modalSuccess.classList.remove('show');
+    });
+  }
+
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      const HIDE_DELAY = 5000;
+
+      if (pendingContact) {
+        pendingContact = false;
+        contactForm?.reset();
+
+        if (pageSuccess) {
+          pageSuccess.style.display = 'block';
+          setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
+        }
+        return;
+      }
+
+      if (pendingModal) {
+        pendingModal = false;
+        modalForm?.reset();
+
+        if (modalSuccess) {
+          modalSuccess.classList.add('show');
+          setTimeout(() => window.closeModal(), HIDE_DELAY);
+        }
+      }
+    });
+  }
+
   // ===== Modal open/close =====
   window.openModal = function () {
     if (!modal) return;
@@ -614,9 +663,9 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
 
-    if (modalForm) modalForm.reset();
-    if (modalForm) modalForm.style.display = 'block'; // важно после успешной отправки
-    if (modalSuccess) modalSuccess.classList.remove('show');
+    modalForm?.reset();
+    if (modalForm) modalForm.style.display = 'block';
+    modalSuccess?.classList.remove('show');
   };
 
   window.addEventListener('click', (event) => {
@@ -678,16 +727,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ===== Hide success on input (page form) =====
-if (contactForm && pageSuccess) {
-  contactForm.addEventListener('input', () => (pageSuccess.style.display = 'none'));
-}
-
-
 });
 </script>
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<iframe id="hiddenIframe" name="hidden_iframe" style="display:none;"></iframe>
+
 
 
 </body>
