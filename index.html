@@ -653,8 +653,7 @@ successCloseBtn?.addEventListener('click', () => successDialog?.close());
     document.body.style.overflow = 'hidden';
 
     if (modalForm) modalForm.style.display = 'block';
-    modalSuccess?.classList.remove('show');
-  };
+      };
 
   window.closeModal = function () {
     if (!modal) return;
@@ -663,8 +662,7 @@ successCloseBtn?.addEventListener('click', () => successDialog?.close());
 
     modalForm?.reset();
     if (modalForm) modalForm.style.display = 'block';
-    modalSuccess?.classList.remove('show');
-  };
+      };
 
   window.addEventListener('click', (event) => {
     if (modal && event.target === modal) window.closeModal();
