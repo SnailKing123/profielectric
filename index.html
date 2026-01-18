@@ -614,47 +614,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (modalForm) {
-  modalForm.addEventListener('submit', (e) => {
-    // если браузер не пропускает required-поля, submit вообще не произойдёт
-    // но на всякий случай проверим валидность формы
-    if (!modalForm.checkValidity()) return;
-
-    pendingModal = true;
-    modalSuccess?.classList.remove('show');
-
-    // Закрыть модалку сразу
-    window.closeModal();
+ if (modalForm) {
+  modalForm.addEventListener('submit', () => {
+    if (!modalForm.reportValidity()) return; // [web:370]
+    setTimeout(() => window.closeModal(), 0);
   });
 }
 
 
-  if (iframe) {
-    iframe.addEventListener('load', () => {
-      const HIDE_DELAY = 5000;
 
-      if (pendingContact) {
-        pendingContact = false;
-        contactForm?.reset();
 
-        if (pageSuccess) {
-          pageSuccess.style.display = 'block';
-          setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
-        }
-        return;
+
+ if (iframe) {
+  iframe.addEventListener('load', () => {
+    const HIDE_DELAY = 5000;
+
+    if (pendingContact) {
+      pendingContact = false;
+      contactForm?.reset();
+
+      if (pageSuccess) {
+        pageSuccess.style.display = 'block';
+        setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
       }
+    }
+  });
+}
 
-      if (pendingModal) {
-        pendingModal = false;
-        modalForm?.reset();
-
-        if (modalSuccess) {
-          modalSuccess.classList.add('show');
-          setTimeout(() => window.closeModal(), HIDE_DELAY);
-        }
-      }
-    });
-  }
 
   // ===== Modal open/close =====
   window.openModal = function () {
