@@ -572,12 +572,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 
 
 
-            <div id="modalSuccess" class="modal-success">
-                <div class="success-icon">✅</div>
-                <h3>Заявка отправлена!</h3>
-                <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
-            </div>
-        </div>
+                    </div>
     </div>
 
   
@@ -586,8 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== Elements =====
   const modal = document.getElementById('callModal');
   const modalForm = document.getElementById('modalForm');
-  const modalSuccess = document.getElementById('modalSuccess');
-
+ 
   const contactForm = document.getElementById('contactForm');
   const pageSuccess = document.getElementById('successMessage');
 
@@ -598,6 +592,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
 
   const phoneLink = document.getElementById('phoneLink');
+
+const successDialog = document.getElementById('successDialog');
+const successCloseBtn = document.getElementById('successCloseBtn');
+
+successCloseBtn?.addEventListener('click', () => successDialog?.close());
 
   // ===== iframe response tracking =====
   const iframe = document.getElementById('hiddenIframe');
@@ -617,7 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalForm) {
     modalForm.addEventListener('submit', () => {
       pendingModal = true;
-      modalSuccess?.classList.remove('show');
+      
     });
   }
 
@@ -637,12 +636,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (pendingModal) {
-        pendingModal = false;
-        modalForm?.reset(); // [web:349]
+  pendingModal = false;
+  modalForm?.reset();
 
-        modalSuccess?.classList.add('show');
-        setTimeout(() => window.closeModal(), HIDE_DELAY);
-      }
+  window.closeModal();          // закрыть форму
+  successDialog?.showModal();   // показать отдельный popup-диалог [web:427]
+}
+
     });
   }
 
@@ -725,6 +725,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <iframe id="hiddenIframe" name="hidden_iframe" style="display:none;"></iframe>
 
+<dialog id="successDialog" class="success-dialog">
+  <div class="success-wrap">
+    <div class="success-icon">✅</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
+    <button class="btn" id="successCloseBtn" type="button">Закрыть</button>
+  </div>
+</dialog>
 
 
 </body>
