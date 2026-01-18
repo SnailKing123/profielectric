@@ -708,9 +708,11 @@ console.log('FORMDATA', Array.from(fd.entries()));
 let res;
 try {
   res = await fetch("https://lead-bot.nlkhrsv.workers.dev/", {
-    method: "POST",
-    body: fd,
-  });
+  method: "POST",
+  body: fd,
+  mode: "no-cors",
+});
+
 } catch (err) {
   console.error("Fetch failed:", err);
   alert("Не удалось отправить заявку: соединение прервано (ERR_CONNECTION_RESET).");
