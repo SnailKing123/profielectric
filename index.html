@@ -426,7 +426,8 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
       </div>
 
-      <form id="contactForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST">
+      <form id="contactForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST" target="hidden_iframe">
+
 
 
   <!-- это поле можно убрать, но можно и оставить как текстовый блок -->
@@ -526,7 +527,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
-            <form id="modalForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST">
+            <form id="modalForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST" target="hidden_iframe">
 
 
   <input type="hidden" name="fi-text-source" value="modal">
@@ -683,78 +684,10 @@ if (contactForm && pageSuccess) {
   contactForm.addEventListener('input', () => (pageSuccess.style.display = 'none'));
 }
 
-async function bind(formId) {
-  const form = document.getElementById(formId);
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (pageSuccess) pageSuccess.style.display = 'none';
-    if (modalSuccess) modalSuccess.classList.remove('show');
-
-    // 1) Собрали данные формы
-const fd = new FormData(form);
-
-// 2) Принудительно записали телефон (важно, если маска не отдаёт значение как надо)
-const phoneInput = form.querySelector('input[name="fi-sender-phone"]');
-fd.set('fi-sender-phone', phoneInput ? phoneInput.value.trim() : '');
-
-// (опционально) посмотреть в консоли, что реально уйдет
-console.log('FORMDATA', Array.from(fd.entries()));
-
-
-// 3) Отправили именно fd (с обработкой сетевых ошибок)
-let res;
-try {
-  res = await fetch("https://lead-bot.nlkhrsv.workers.dev/", {
-  method: "POST",
-  body: fd,
-  mode: "no-cors",
-});
-
-} catch (err) {
-  console.error("Fetch failed:", err);
-  alert("Не удалось отправить заявку: соединение прервано (ERR_CONNECTION_RESET).");
-  return;
-}
-
-const text = await res.text();
-console.log("Worker status:", res.status);
-console.log("Worker response:", text);
-
-if (!res.ok) {
-  alert("Ошибка воркера: " + res.status + "\n" + text);
-  return;
-}
-
-        const HIDE_DELAY = 5000;
-
-    if (formId === 'contactForm') {
-      form.reset();
-      if (pageSuccess) {
-        pageSuccess.style.display = 'block';
-        setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
-      }
-    }
-
-    if (formId === 'modalForm') {
-      form.reset();
-      form.style.display = 'none';
-      if (modalSuccess) {
-        modalSuccess.classList.add('show');
-        setTimeout(() => window.closeModal(), HIDE_DELAY);
-      }
-    }
-
-  }); 
-}  
-
-bind('contactForm');
-bind('modalForm');
 
 });
 </script>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 
 </body>
