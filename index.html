@@ -446,7 +446,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 
   <div class="form-group">
     <label for="service">Услуга *</label>
-    <select id="service" name="fi-select-service" required>
+    <select id="service" name="fi-select-service">
       <option value="">-- Выберите услугу --</option>
       <option value="Установка розеток">Установка розеток</option>
       <option value="Установка выключателей">Установка выключателей</option>
@@ -707,19 +707,24 @@ async function bind(formId) {
       return;
     }
 
+        const HIDE_DELAY = 5000;
+
     if (formId === 'contactForm') {
       form.reset();
       if (pageSuccess) {
         pageSuccess.style.display = 'block';
-        setTimeout(() => (pageSuccess.style.display = 'none'), 5000);
+        setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
       }
     }
 
     if (formId === 'modalForm') {
       form.reset();
       form.style.display = 'none';
-      if (modalSuccess) modalSuccess.classList.add('show');
-    }
+      if (modalSuccess) {
+        modalSuccess.classList.add('show');
+        setTimeout(() => window.closeModal(), HIDE_DELAY);
+      }
+
   });
 }
 
