@@ -719,9 +719,12 @@ try {
   return;
 }
 
+const text = await res.text();
+console.log("Worker status:", res.status);
+console.log("Worker response:", text);
+
 if (!res.ok) {
-  console.error("Worker error", await res.text());
-  alert("Сервер вернул ошибку при отправке заявки.");
+  alert("Ошибка воркера: " + res.status + "\n" + text);
   return;
 }
 
