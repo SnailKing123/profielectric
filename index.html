@@ -693,10 +693,22 @@ async function bind(formId) {
     if (pageSuccess) pageSuccess.style.display = 'none';
     if (modalSuccess) modalSuccess.classList.remove('show');
 
-    const res = await fetch("https://lead-bot.nlkhrsv.workers.dev/", {
-      method: "POST",
-      body: new FormData(form),
-    });
+    // 1) Собрали данные формы
+const fd = new FormData(form);
+
+// 2) Принудительно записали телефон (важно, если маска не отдаёт значение как надо)
+const phoneInput = form.querySelector('input[name="fi-sender-phone"]');
+fd.set('fi-sender-phone', phoneInput ? phoneInput.value.trim() : '');
+
+// (опционально) посмотреть в консоли, что реально уйдет
+console.log('FORMDATA', Array.from(fd.entries()));
+
+// 3) Отправили именно fd
+const res = await fetch("https://lead-bot.nlkhrsv.workers.dev/", {
+  method: "POST",
+  body: fd,
+});
+
 
     if (!res.ok) {
       console.error("Worker error", await res.text());
