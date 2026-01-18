@@ -1024,6 +1024,27 @@ footer {
                 transform: translateY(0);
             }
         }
+.thanks-popup{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  z-index: 9999;
+}
+.thanks-popup.show{ display: flex; }
+
+.thanks-popup__box{
+  background: #fff;
+  color: #111;
+  padding: 18px 20px;
+  border-radius: 12px;
+  width: min(420px, calc(100% - 32px));
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+.thanks-popup__title{ font-weight: 700; margin-bottom: 6px; }
+.thanks-popup__text{ opacity: .9; }
 
         @keyframes slideUp {
             from {
