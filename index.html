@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const phoneLink = document.getElementById('phoneLink');
 
-  // ===== Show success after iframe gets server response =====
+  // ===== iframe response tracking =====
   const iframe = document.getElementById('hiddenIframe');
   let pendingContact = false;
   let pendingModal = false;
@@ -614,33 +614,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
- if (modalForm) {
-  modalForm.addEventListener('submit', () => {
-    if (!modalForm.reportValidity()) return; // [web:370]
-    setTimeout(() => window.closeModal(), 0);
-  });
-}
+  if (modalForm) {
+    modalForm.addEventListener('submit', () => {
+      pendingModal = true;
+      modalSuccess?.classList.remove('show');
+    });
+  }
 
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      const HIDE_DELAY = 5000;
 
+      if (pendingContact) {
+        pendingContact = false;
+        contactForm?.reset(); // [web:349]
 
-
-
- if (iframe) {
-  iframe.addEventListener('load', () => {
-    const HIDE_DELAY = 5000;
-
-    if (pendingContact) {
-      pendingContact = false;
-      contactForm?.reset();
-
-      if (pageSuccess) {
-        pageSuccess.style.display = 'block';
-        setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
+        if (pageSuccess) {
+          pageSuccess.style.display = 'block';
+          setTimeout(() => (pageSuccess.style.display = 'none'), HIDE_DELAY);
+        }
+        return;
       }
-    }
-  });
-}
 
+      if (pendingModal) {
+        pendingModal = false;
+        modalForm?.reset(); // [web:349]
+
+        modalSuccess?.classList.add('show');
+        setTimeout(() => window.closeModal(), HIDE_DELAY);
+      }
+    });
+  }
 
   // ===== Modal open/close =====
   window.openModal = function () {
@@ -649,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
 
     if (modalForm) modalForm.style.display = 'block';
-    if (modalSuccess) modalSuccess.classList.remove('show');
+    modalSuccess?.classList.remove('show');
   };
 
   window.closeModal = function () {
@@ -668,10 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Mobile menu toggle =====
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
@@ -680,7 +681,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== Sticky header offset =====
   if (header) {
     const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
-
     header.style.top = `${getTopbarHeight()}px`;
 
     let lastScrollTop = 0;
@@ -694,7 +694,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.top = `${getTopbarHeight()}px`;
         header.style.zIndex = '100';
       }
-
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
 
@@ -709,7 +708,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     phoneLink.addEventListener('click', async (e) => {
       e.preventDefault();
-
       const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
 
       try {
@@ -723,6 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
 
 <iframe id="hiddenIframe" name="hidden_iframe" style="display:none;"></iframe>
 
