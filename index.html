@@ -426,7 +426,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
       </div>
 
-      <form id="contactForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST" target="hidden_iframe">
+      <form id="contactForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
 
 
 
@@ -527,7 +527,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
-            <form id="modalForm" action="https://lead-bot.nlkhrsv.workers.dev/" method="POST" target="hidden_iframe">
+            <form id="modalForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
 
 
   <input type="hidden" name="fi-text-source" value="modal">
@@ -535,13 +535,13 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
   
 <div class="form-group">
   <label for="modalAnyName">Как к вам обращаться?</label>
-  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Например: 123 / @ник / ООО Ромашка">
+  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Введите ваше имя:">
 </div>
 
 
   <div class="form-group">
     <label for="modalPhone">Телефон *</label>
-    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="+7 (999) 123-45-67">
+    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="Номер телефона:">
   </div>
 
   <div class="form-group">
@@ -605,59 +605,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var phoneLink = document.getElementById('phoneLink');
 
-  // ===== Show success after iframe gets server response =====
-  var iframe = document.getElementById('hiddenIframe');
-
-  // флажки: чтобы не считать первый "пустой" load как успех
-  var pendingContact = false;
-  var pendingModal = false;
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', function () {
-      pendingContact = true;
-      if (pageSuccess) pageSuccess.style.display = 'none';
-    });
-
-    if (pageSuccess) {
-      contactForm.addEventListener('input', function () {
-        pageSuccess.style.display = 'none';
-      });
-    }
-  }
-
-  if (modalForm) {
-    modalForm.addEventListener('submit', function () {
-      pendingModal = true;
-      if (modalSuccess) modalSuccess.classList.remove('show');
-    });
-  }
-
-  if (iframe) {
-  iframe.addEventListener('load', function () {
-    var THANKS_DELAY = 3000;
-
-    if (pendingContact) {
-      pendingContact = false;
-      if (contactForm) contactForm.reset();
-      showThanksPopup();
-      if (pageSuccess) pageSuccess.style.display = 'none';
-      return;
-    }
-
-    if (pendingModal) {
-      pendingModal = false;
-      if (modalForm) modalForm.reset();
-      showThanksPopup();
-
-      setTimeout(function () {
-        window.closeModal();
-      }, THANKS_DELAY);
-
-      return;
-    }
-  });
-}
-
+  
   // ===== Modal open/close =====
   window.openModal = function () {
     if (!modal) return;
@@ -765,7 +713,7 @@ function showThanksPopup() {
 </script>
 
 
-<iframe id="hiddenIframe" name="hidden_iframe" style="display:none;"></iframe>
+
 
 
 
