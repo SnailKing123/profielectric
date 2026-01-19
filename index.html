@@ -30,7 +30,7 @@
         }
   </style>
  <link rel="stylesheet" href="styles/styles.css">
-	<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Top Info Bar -->
@@ -48,7 +48,7 @@
   </svg>
 </span>
 
-                <a href="tel:+79991234567" id="phoneLink">+7 (999) 123-45-67</a>
+                <a href="tel:+79966075216" id="phoneLink">+7 (996) 607-52-16</a>
 
             </div>
             <div class="top-bar-item">
@@ -606,7 +606,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var phoneLink = document.getElementById('phoneLink');
 
-  
+  var thanksPopup = document.getElementById('thanksPopup');
+  var thanksTimer = null;
+
   // ===== Modal open/close =====
   window.openModal = function () {
     if (!modal) return;
@@ -669,23 +671,22 @@ document.addEventListener('DOMContentLoaded', function () {
       header.style.top = getTopbarHeight() + 'px';
     });
   }
-var thanksPopup = document.getElementById('thanksPopup');
-var thanksTimer = null;
 
-function showThanksPopup() {
-  if (!thanksPopup) return;
+  // ===== Thanks popup =====
+  function showThanksPopup() {
+    if (!thanksPopup) return;
 
-  // показать
-  thanksPopup.classList.add('show'); // classList.add/remove 
-  thanksPopup.setAttribute('aria-hidden', 'false');
+    // показать
+    thanksPopup.classList.add('show');
+    thanksPopup.setAttribute('aria-hidden', 'false');
 
-  // закрыть через 3 секунды
-  if (thanksTimer) clearTimeout(thanksTimer);
-  thanksTimer = setTimeout(function () { 
-    thanksPopup.classList.remove('show');
-    thanksPopup.setAttribute('aria-hidden', 'true');
-  }, 3000);
-}
+    // закрыть через 3 секунды
+    if (thanksTimer) clearTimeout(thanksTimer);
+    thanksTimer = setTimeout(function () { 
+      thanksPopup.classList.remove('show');
+      thanksPopup.setAttribute('aria-hidden', 'true');
+    }, 3000);
+  }
 
   // ===== Copy phone to clipboard =====
   if (phoneLink) {
@@ -710,8 +711,45 @@ function showThanksPopup() {
       }
     });
   }
+
+  // ===== AJAX submit for forms (чтобы НЕ открывалось окно "OK") =====
+  async function sendForm(form) {
+    var body = new URLSearchParams(new FormData(form));
+
+    var res = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body,
+    });
+
+    var text = await res.text();
+    if (!res.ok) throw new Error(text || ('HTTP ' + res.status));
+    return text;
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault(); // отменяем обычную отправку — НЕТ окна "ok" [web:945]
+    var form = e.currentTarget;
+
+    try {
+      await sendForm(form);
+      form.reset();
+      showThanksPopup();
+
+      // если отправили из модалки — закрываем её через 3 секунды
+      if (form === modalForm && typeof window.closeModal === 'function') {
+        setTimeout(function () { window.closeModal(); }, 3000);
+      }
+    } catch (err) {
+      alert('Ошибка отправки: ' + (err && err.message ? err.message : err));
+    }
+  }
+
+  if (contactForm) contactForm.addEventListener('submit', onSubmit);
+  if (modalForm) modalForm.addEventListener('submit', onSubmit);
 });
 </script>
+
 
 
 
