@@ -85,6 +85,31 @@ html, body {
 .top-bar a:hover {
   color: var(--color-accent);
 }
+.social-icons {
+  display: inline-flex;
+  gap: 8px;
+  margin-left: 12px;
+  align-items: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-link.tg { background: #0088cc; color: white; }
+.social-link.wa { background: #25D366; color: white; }
+
+.social-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
 
 /* ===== HEADER ===== */
 header {
