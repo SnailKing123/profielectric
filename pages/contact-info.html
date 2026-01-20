@@ -23,6 +23,7 @@
             --color-success: #4CAF50;
         }
 
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -117,55 +118,82 @@
             color: var(--color-primary);
         }
 
-        /* Contact Info Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+        /* Contact Info Section — 5 карточек в ряд */
+.contact-info{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 60px;
+  align-items: stretch;
+}
 
-        .info-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
+/* Карточка: уменьшаем, чтобы влезало 5 шт. в контейнер */
+.info-card{
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 18px 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 0; /* важно для grid, чтобы контент не раздвигал колонку */
+}
 
-        .info-card:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-        }
+.info-card:hover{
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+ box-shadow: 0 4px 20px rgba(255, 165, 0, 0.4) !important; /* Оранжевая тень */
+    outline: none; /* Убирает стандартный outline */
+}
 
-        .info-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+#phoneBlock:hover {
+    cursor: pointer; /* Курсор указателя */
 
-        .info-card h3 {
-            margin-top: 0;
-        }
+}
 
-        .info-card p {
-            color: var(--color-text-light);
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+.info-icon{
+  font-size: 40px;
+  margin-bottom: 10px;
+  line-height: 1;
+}
 
-        .info-card a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
+.info-card h3{
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: var(--color-primary);
+}
 
-        .info-card a:hover {
-            color: var(--color-accent);
-        }
+.info-card p{
+  color: var(--color-text-light);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.info-card a{
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  transition: color 0.3s ease;
+  word-break: break-word;
+}
+
+.info-card a:hover{
+  color: var(--color-accent);
+}
+
+/* Адаптивность: чтобы не было каши на меньших экранах */
+@media (max-width: 1100px){
+  .contact-info{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px){
+  .contact-info{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px){
+  .contact-info{ grid-template-columns: 1fr; }
+}
 
         /* Map Container */
         .map-container {
@@ -396,7 +424,222 @@
             font-size: 13px;
             color: #999;
         }
+.areas-section { margin-bottom: 40px; }
+.area-card-compact {
+    padding: 12px !important;
+    font-size: 14px !important;
+    min-height: 60px;
+}
+.area-card-compact h4 { 
+    font-size: 16px !important; 
+    margin-bottom: 4px !important; 
+}
+.area-card-compact p { 
+    font-size: 12px !important; 
+    margin-bottom: 4px !important; 
+}
+.areas-grid { 
+    gap: 12px !important; 
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+}
+.area-card-compact {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    background: #fff !important;
+}
 
+.area-card-compact:hover {
+    border-color: #ff8c00 !important;
+    box-shadow: 0 4px 16px rgba(255,140,0,0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.area-badge {
+    background: #ff8c00 !important;
+    color: white !important;
+    padding: 4px 8px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+
+.areas-section h3 {
+    color: #333 !important;
+    margin-bottom: 20px !important;
+    font-size: 20px !important;
+}
+/* Исправленный CSS - без переноса текста */
+.service-areas {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.areas-section { 
+    margin-bottom: 50px; 
+    text-align: center;
+}
+
+.areas-section h3 {
+    color: #333 !important;
+    margin-bottom: 25px !important;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.areas-grid { 
+    display: grid !important;
+    gap: 15px !important; 
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) !important;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.area-card-compact {
+    padding: 12px !important;
+    font-size: 14px !important;
+    min-height: 70px !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    background: #fff !important;
+    text-align: center !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+    max-width: 180px !important;
+    width: 100% !important;
+}
+
+.area-card-compact h4 { 
+    font-size: 14px !important; 
+    margin: 0 0 4px 0 !important; 
+    font-weight: bold !important;
+    white-space: nowrap !important; /* Запрет переноса */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.area-card-compact p { 
+    font-size: 12px !important; 
+    margin: 0 0 6px 0 !important; 
+    color: #666;
+    white-space: nowrap !important;
+}
+
+.area-badge {
+    background: #ff8c00 !important;
+    color: white !important;
+    padding: 3px 8px !important;
+    border-radius: 15px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    align-self: center !important; /* Центрированная оранжевая плашка */
+    margin-top: auto;
+    white-space: nowrap !important;
+}
+
+.area-card-compact:hover {
+    border-color: #ff8c00 !important;
+    box-shadow: 0 6px 20px rgba(255,140,0,0.3) !important;
+    transform: translateY(-3px) !important;
+}
+/* Финальная центровка блоков между собой */
+.service-areas {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.areas-section { 
+    margin-bottom: 50px; 
+    text-align: center;
+}
+
+.areas-section h3 {
+    color: #333 !important;
+    margin-bottom: 25px !important;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.areas-grid { 
+    display: grid !important;
+    gap: 15px !important; 
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) !important;
+    justify-content: center !important; /* Центровка блоков по горизонтали */
+    align-items: center !important; /* Центровка по вертикали */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: fit-content; /* Контейнер подстраивается под содержимое */
+}
+
+.area-card-compact {
+    padding: 12px !important;
+    font-size: 14px !important;
+    min-height: 70px !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    background: #fff !important;
+    text-align: center !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+    max-width: 180px !important;
+    width: 100% !important;
+}
+
+.area-card-compact h4 { 
+    font-size: 14px !important; 
+    margin: 0 0 4px 0 !important; 
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.area-card-compact p { 
+    font-size: 12px !important; 
+    margin: 0 0 6px 0 !important; 
+    color: #666;
+    white-space: nowrap !important;
+}
+
+.area-badge {
+    background: #ff8c00 !important;
+    color: white !important;
+    padding: 3px 8px !important;
+    border-radius: 15px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    align-self: center !important;
+    margin-top: auto;
+    white-space: nowrap !important;
+}
+
+.area-card-compact:hover {
+    border-color: #ff8c00 !important;
+    box-shadow: 0 6px 20px rgba(255,140,0,0.3) !important;
+    transform: translateY(-3px) !important;
+}
+
+
+
+.hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), 
+                        url('../assets/images/hero-bg-contact.jpg') center/cover;
+            color: white;
+            padding: 45px 0 45px;
+            text-align: center;
+        }
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -443,7 +686,7 @@
 
             <!-- КЛИКАБЕЛЬНЫЕ ИКОНКИ TG и WA -->
             <div class="social-icons">
-                <a href="https://t.me/+79966075216" target="_blank" title="Telegram" class="social-link tg">
+                <a href="https://t.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?" target="_blank" title="Telegram" class="social-link tg">
                     
                                 
 <svg width="32px" height="32px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff" class="bi bi-telegram">
@@ -451,7 +694,7 @@
 </svg>
                             
                 </a>
-                <a href="https://wa.me/+79966075216" target="_blank" title="WhatsApp" class="social-link wa">
+                <a href="https://wa.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?" target="_blank" title="WhatsApp" class="social-link wa">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 19.885 3.488"/>
                     </svg>
@@ -535,148 +778,209 @@
         <div class="container">
             <!-- Contact Info Cards -->
             <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon">📞</div>
-                    <h3>Телефон</h3>
-                    <p>Позвоните нам прямо сейчас</p>
-                    <a href="tel:+79991234567">+7 (999) 123-45-67</a>
-                </div>
+                <div class="info-card" id="phoneBlock">
+    <div class="info-icon">
+        <svg fill="#000000" width="42px" height="42px" viewBox="-10 0 46 46" xmlns="http://www.w3.org/2000/svg">
+  <path id="_27.Phone" data-name="27.Phone" d="M33,47H15a4,4,0,0,1-4-4V5a4,4,0,0,1,4-4H33a4,4,0,0,1,4,4V43A4,4,0,0,1,33,47ZM35,5a2,2,0,0,0-2-2H15a2,2,0,0,0-2,2V9H35Zm0,6H13V37H35Zm0,28H13v4a2,2,0,0,0,2,2H33a2,2,0,0,0,2-2ZM24,44a2,2,0,1,1,2-2A2,2,0,0,1,24,44ZM17,14h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H17a1,1,0,0,1-1-1V15A1,1,0,0,1,17,14Zm0,7h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H17a1,1,0,0,1-1-1V22A1,1,0,0,1,17,21Zm0,7h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H17a1,1,0,0,1-1-1V29A1,1,0,0,1,17,28Zm6-14h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H23a1,1,0,0,1-1-1V15A1,1,0,0,1,23,14Zm0,7h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H23a1,1,0,0,1-1-1V22A1,1,0,0,1,23,21Zm0,7h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H23a1,1,0,0,1-1-1V29A1,1,0,0,1,23,28Zm6-14h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H29a1,1,0,0,1-1-1V15A1,1,0,0,1,29,14Zm0,7h2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H29a1,1,0,0,1-1-1V22A1,1,0,0,1,29,21ZM21,5h6a1,1,0,0,1,0,2H21a1,1,0,0,1,0-2Z" transform="translate(-11 -1)" fill-rule="evenodd"/>
+</svg>
+    </div>
+    <h3>Телефон</h3>
+    <p>Позвоните нам прямо сейчас</p>
+    <a href="tel:+79966075216" id="phoneLink">+7 (996) 607-52-16</a>
+</div>
 
-                <div class="info-card">
-                    <div class="info-icon">📧</div>
-                    <h3>Email</h3>
-                    <p>Отправьте письмо</p>
-                    <a href="mailto:info@profelectrik.ru">info@profelectrik.ru</a>
-                </div>
+<div class="info-card" id="telegramBlock">
+    		<div class="info-icon">
 
-                <div class="info-card">
-                    <div class="info-icon">⏰</div>
+                                
+<svg fill="#000000" width="48px" height="48px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M 26.070313 3.996094 C 25.734375 4.011719 25.417969 4.109375 25.136719 4.21875 L 25.132813 4.21875 C 24.847656 4.332031 23.492188 4.902344 21.433594 5.765625 C 19.375 6.632813 16.703125 7.757813 14.050781 8.875 C 8.753906 11.105469 3.546875 13.300781 3.546875 13.300781 L 3.609375 13.277344 C 3.609375 13.277344 3.25 13.394531 2.875 13.652344 C 2.683594 13.777344 2.472656 13.949219 2.289063 14.21875 C 2.105469 14.488281 1.957031 14.902344 2.011719 15.328125 C 2.101563 16.050781 2.570313 16.484375 2.90625 16.722656 C 3.246094 16.964844 3.570313 17.078125 3.570313 17.078125 L 3.578125 17.078125 L 8.460938 18.722656 C 8.679688 19.425781 9.949219 23.597656 10.253906 24.558594 C 10.433594 25.132813 10.609375 25.492188 10.828125 25.765625 C 10.933594 25.90625 11.058594 26.023438 11.207031 26.117188 C 11.265625 26.152344 11.328125 26.179688 11.390625 26.203125 C 11.410156 26.214844 11.429688 26.21875 11.453125 26.222656 L 11.402344 26.210938 C 11.417969 26.214844 11.429688 26.226563 11.441406 26.230469 C 11.480469 26.242188 11.507813 26.246094 11.558594 26.253906 C 12.332031 26.488281 12.953125 26.007813 12.953125 26.007813 L 12.988281 25.980469 L 15.871094 23.355469 L 20.703125 27.0625 L 20.8125 27.109375 C 21.820313 27.550781 22.839844 27.304688 23.378906 26.871094 C 23.921875 26.433594 24.132813 25.875 24.132813 25.875 L 24.167969 25.785156 L 27.902344 6.65625 C 28.007813 6.183594 28.035156 5.742188 27.917969 5.3125 C 27.800781 4.882813 27.5 4.480469 27.136719 4.265625 C 26.769531 4.046875 26.40625 3.980469 26.070313 3.996094 Z M 25.96875 6.046875 C 25.964844 6.109375 25.976563 6.101563 25.949219 6.222656 L 25.949219 6.234375 L 22.25 25.164063 C 22.234375 25.191406 22.207031 25.25 22.132813 25.308594 C 22.054688 25.371094 21.992188 25.410156 21.667969 25.28125 L 15.757813 20.75 L 12.1875 24.003906 L 12.9375 19.214844 C 12.9375 19.214844 22.195313 10.585938 22.59375 10.214844 C 22.992188 9.84375 22.859375 9.765625 22.859375 9.765625 C 22.886719 9.3125 22.257813 9.632813 22.257813 9.632813 L 10.082031 17.175781 L 10.078125 17.15625 L 4.242188 15.191406 L 4.242188 15.1875 C 4.238281 15.1875 4.230469 15.183594 4.226563 15.183594 C 4.230469 15.183594 4.257813 15.171875 4.257813 15.171875 L 4.289063 15.15625 L 4.320313 15.144531 C 4.320313 15.144531 9.53125 12.949219 14.828125 10.71875 C 17.480469 9.601563 20.152344 8.476563 22.207031 7.609375 C 24.261719 6.746094 25.78125 6.113281 25.867188 6.078125 C 25.949219 6.046875 25.910156 6.046875 25.96875 6.046875 Z"/></svg>
+                            
+</div>
+   		 <h3>Telegram</h3>
+   		 <p>Напишите нам</p>
+   		 <a href="https://t.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?" id="telegramLink">@silvernevel</a>
+</div>
+
+		<div class="info-card" id="whatsappBlock">
+   			 <div class="info-icon">
+
+                                
+<svg fill="#000000" width="52px" height="52px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"/></svg>
+                            
+</div>
+                    <h3>WhatsApp</h3>	
+    		<p>Ждем вашего сообщения</p>
+    <a href="https://wa.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?">+7 (996) 607-52-16</a>
+</div>
+
+
+          <div class="info-card" id="emailBlock">
+    		<div class="info-icon">
+                                
+<svg width="42px" height="42px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 3.5l.5-.5h13l.5.5v9l-.5.5h-13l-.5-.5v-9zm1 1.035V12h12V4.536L8.31 8.9H7.7L2 4.535zM13.03 4H2.97L8 7.869 13.03 4z"/></svg>
+                            </div>
+   	 <h3>Email</h3>
+    	      <p>Отправьте письмо</p>
+    	<a href="mailto:info@profelectrik.ru?subject=Запрос%20по%20электромонтажу&body=Здравствуйте!%0AИнтересует...">info@profelectrik.ru</a>
+</div>
+
+                <div class="info-card" id="scheduleBlock">
+                    <div class="info-icon">
+
+                                
+<svg width="52px" height="52px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000" fill="none"><circle cx="32" cy="32" r="25.3"/><polyline points="32 11.88 32 32.77 43.22 41.38"/></svg>
+                            
+</div>
                     <h3>График работы</h3>
-                    <p style="margin-bottom: 12px;">Пн-Пт: 08:00 - 21:00<br>Сб-Вс: 09:00 - 20:00</p>
-                    <p style="font-size: 12px; color: var(--color-accent);">24/7 Экстренный выезд</p>
+                    <p style="margin-bottom: 16px;">Ежедневно<br><strong>С 09:00 до 21:00</strong></p>
+                    
                 </div>
             </div>
 
-            <!-- Map -->
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115215.14892566456!2d49.06762!3d55.75222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eaa2e7e4c4e41%3A0xb7e02ffa76f76fbe!2z0JrQsNC10L_QsNGA0LDQvA!5e0!3m2!1sru!2sru!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
+           
             <!-- Service Areas -->
-            <div class="service-areas">
-                <div class="container">
-                    <h2>Зоны обслуживания в Казани</h2>
-                    <p class="areas-subtitle">Мы выезжаем по всей Казани, включая все районы и станции метро</p>
+<div class="service-areas">
+    <div class="container">
+        <h2>Зоны обслуживания в Казани</h2>
+        <p class="areas-subtitle">Работаем по всей Казани и соседним районам</p>
 
-                    <div class="areas-grid">
-                        <!-- Центральные районы -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏙️ Вахитовский</h4>
-                            <p>Центр города, метро Кремлевская</p>
-                            <span class="area-badge">Центр</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏢 Приволжский</h4>
-                            <p>Метро Площадь Габдуллина</p>
-                            <span class="area-badge">Центр</span>
-                        </div>
-
-                        <!-- Северные районы -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🌳 Советский</h4>
-                            <p>Метро Авиастроителей, Юго-Западная</p>
-                            <span class="area-badge">Север</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏘️ Ново-Савиновский</h4>
-                            <p>Метро Козья Слобода, Проспект Победы</p>
-                            <span class="area-badge">Север</span>
-                        </div>
-
-                        <!-- Восточные районы -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏗️ Калининский</h4>
-                            <p>Метро Парк Победы, Дубравная</p>
-                            <span class="area-badge">Восток</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🌆 Московский</h4>
-                            <p>Метро Горки, Комсомольская</p>
-                            <span class="area-badge">Восток</span>
-                        </div>
-
-                        <!-- Западные районы -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏡 Кировский</h4>
-                            <p>Чебоксарский, Ватутина</p>
-                            <span class="area-badge">Запад</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🌲 Зеленодольский</h4>
-                            <p>Районы за Волгой</p>
-                            <span class="area-badge">За Волгой</span>
-                        </div>
-
-                        <!-- Южные районы -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🏙️ Набережные Челны</h4>
-                            <p>Метро Авиазавод</p>
-                            <span class="area-badge">Юг</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🌉 Октябрьский</h4>
-                            <p>Метро Курск, Беломорская</p>
-                            <span class="area-badge">Юг</span>
-                        </div>
-
-                        <!-- Метро -->
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Кремлевская</h4>
-                            <p>Исторический центр</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Восстания</h4>
-                            <p>Центральный район</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Козья Слобода</h4>
-                            <p>Северная часть</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Авиастроителей</h4>
-                            <p>Советский район</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Парк Победы</h4>
-                            <p>Восточная часть</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-
-                        <div class="area-card" onclick="window.location.href='index.html'">
-                            <h4>🚇 м. Дубравная</h4>
-                            <p>Калининский район</p>
-                            <span class="area-badge">Метро</span>
-                        </div>
-                    </div>
-
-                    <div class="info-box" style="margin-top: 35px;">
-                        <p><strong>✓ Вся Казань:</strong> Мы обслуживаем весь город, включая все станции метро и частные сектора. Выезд в любую точку Казани в течение 30-60 минут после звонка.</p>
-                    </div>
+        <!-- Районы Казани -->
+        <div class="areas-section">
+            <h3>Районы Казани</h3>
+            <div class="areas-grid">
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Вахитовский</h4>
+                    <p>Центр города</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Авиастроительный</h4>
+                    <p>Север города</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Кировский</h4>
+                    <p>Запад города</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Московский</h4>
+                    <p>Центр-запад</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Ново-Савиновский</h4>
+                    <p>Центр-восток</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Приволжский</h4>
+                    <p>Юг города</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Советский</h4>
+                    <p>Восток города</p>
+                    <span class="area-badge">Казань</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Метро Казани -->
+        <div class="areas-section">
+            <h3>Метро Казани</h3>
+            <div class="areas-grid">
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Авиастроительная</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Северный вокзал</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Яшьлек</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Козья слобода</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Кремлёвская</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Площадь Тукая</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Суконная слобода</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Аметьево</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Горки</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Проспект Победы</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Дубравная</h4>
+                    <p>Метро</p>
+                    <span class="area-badge">Казань</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- За пределами Казани -->
+        <div class="areas-section">
+            <h3>Окрестности Казани</h3>
+            <div class="areas-grid">
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Высокогорский</h4>
+                    <p>Высокая Гора</p>
+                    <span class="area-badge">Пригород</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Лаишевский</h4>
+                    <p>Лаишево</p>
+                    <span class="area-badge">Пригород</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Зеленодольский</h4>
+                    <p>Свияжск</p>
+                    <span class="area-badge">Пригород</span>
+                </div>
+                <div class="area-card-compact" onclick="window.location.href='../index.html'">
+                    <h4>Пестречинский</h4>
+                    <p>Пестрецы</p>
+                    <span class="area-badge">Пригород</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 35px;">
+            <p><strong>✓ Вся Казань:</strong> Мы обслуживаем весь город, включая все станции метро и частные сектора. Выезд в любую точку Казани в течение 30-60 минут после звонка.</p>
+        </div>
+    </div>
+</div>
+
 
             <!-- Contact Form Section -->
 <section class="form-section" id="contact">
@@ -1009,7 +1313,67 @@ document.addEventListener('DOMContentLoaded', function () {
   if (contactForm) contactForm.addEventListener('submit', onSubmit);
   if (modalForm) modalForm.addEventListener('submit', onSubmit);
 });
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('phoneBlock').addEventListener('click', async function(e) {
+    e.preventDefault(); // Предотвращает переход по ссылке
+    
+    const phoneNumber = '+79966075216';
+    
+    try {
+        await navigator.clipboard.writeText(phoneNumber);
+        
+        // Сохраняем оригинальное содержимое
+        const originalHTML = this.innerHTML;
+        
+        // Заменяем на сообщение
+        this.innerHTML = '<div style="text-align: center; padding: 20px;"><h3>Номер скопирован!</h3></div>';
+        
+        // Восстанавливаем через 4 секунды
+        setTimeout(() => {
+            this.innerHTML = originalHTML;
+        }, 4000);
+    } catch (err) {
+        console.error('Ошибка копирования: ', err);
+    }
+});
+document.getElementById('telegramBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('https://t.me/+79966075216', '_blank');
+});
+document.getElementById('whatsappBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('https://wa.me/+79966075216', '_blank');
+});
+document.getElementById('emailBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = 'mailto:info@profelectrik.ru?subject=Запрос%20по%20электромонтажу&body=Здравствуйте!%0AИнтересует%20услуги%20электрика.%0A%0AС%20уважением';
+});
+document.getElementById('scheduleBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+       const originalHTML = this.innerHTML;
+        this.innerHTML = '<div style="text-align: center; padding: 20px;"><h3>Работаем без выходных!</h3></div>';
+        setTimeout(() => {
+        this.innerHTML = originalHTML;
+    }, 4000);
+});
+
 </script>
+
+
+
+
+
+
 
 </body>
 </html>
