@@ -670,85 +670,197 @@
         </section>
     </main>
 
-    <!-- Footer -->
+     <!-- Contact Form Section -->
+<section class="form-section" id="contact">
+  <div class="container">
+    <h2 style="color: var(--color-primary);">Заказать услугу</h2>
+
+    <div class="form-container">
+      <div class="success-message" id="successMessage" style="display:none;">
+        ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+      </div>
+
+      <form id="contactForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
+
+
+
+  <!-- это поле можно убрать, но можно и оставить как текстовый блок -->
+  <input type="hidden" name="fi-text-source" value="page">
+
+  
+<div class="form-group">
+  <label for="anyName">Как к вам обращаться? </label>
+  <input type="text" id="anyName" name="fi-text-anyName" placeholder="Введите ваше имя">
+</div>
+
+
+  <div class="form-group">
+    <label for="phone">Телефон *</label>
+    <input type="tel" id="phone" name="fi-sender-phone" required placeholder="Номер телефона">
+  </div>
+
+  <div class="form-group">
+    <label for="service">Услуга *</label>
+    <select id="service" name="fi-select-service">
+      <option value="">-- Выберите услугу --</option>
+      <option value="Установка розеток">Установка розеток</option>
+      <option value="Установка выключателей">Установка выключателей</option>
+      <option value="Установка люстр и светильников">Установка люстр и светильников</option>
+      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+      <option value="Прокладка кабеля">Прокладка кабеля</option>
+      <option value="Монтаж счетчика">Монтаж счетчика</option>
+      <option value="Экстренный ремонт">Экстренный ремонт</option>
+      <option value="Другое">Другое</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="message">Описание проблемы</label>
+    <textarea id="message" name="fi-text-message" placeholder="Опишите вашу проблему подробнее..."></textarea>
+  </div>
+
+  <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+</form>
+ <p class="form-policy">
+    Нажимая кнопку «Отправить», вы соглашаетесь с
+    <a href="../pages/privacy.html" target="_blank">
+      политикой конфиденциальности
+    </a>
+  </p>
+
+    </div>
+  </div>
+</section>
+
+
+
+     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>О компании</h4>
+                    <h4>
+<div class="logo">
+  <a class="logo-link" href="index.html">
+    <img class="logo-img" src="../assets/icons/logo-horizontal.svg" alt="ПрофЭлектрик Казань">
+    <div class="logo-text">
+      <span>ПрофЭлектрик</span>
+      <div class="city-name">Казань</div>
+    </div>
+  </a>
+</div>
+
+</h4>
+                    
+                    <p>Профессиональные электромонтажные работы в Казани и области.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
                     <ul>
-                        <li><a href="about-company.html">О нас</a></li>
-                        <li><a href="contact-info.html">Контакты</a></li>
-                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="../pages/uslugi-i-ceny.html">Услуги и цены</a></li>
+                        <li><a href="../pages/otzivy.html">Отзывы</a></li>
+                        <li><a href="../pages/faq-section.html">Частые вопросы</a></li>
+                        <li><a href="../pages/contact-info.html">Контакты</a></li>
+                        
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Услуги</h4>
+                    
                     <ul>
-                        <li><a href="uslugi-i-ceny.html">Услуги и цены</a></li>
-                        <li><a href="#">Монтаж электропроводки</a></li>
-                        <li><a href="#">Ремонт проводки</a></li>
+                        <li><a href="tel:+79966075216">+7 (996) 607-52-16</a></li>
+                        <li><a href="mailto:info@profielectric.ru">info@profielectric.ru</a></li>
+                        <li><a href="#" onclick="openModal()">Обратный звонок</a></li>
+                         <li><a href="https://t.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?" id="telegramLink">Telegram</a>
+
+</li>
+                        <li><a href="https://wa.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?">WhatsApp</a>
+</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Контакты</h4>
+                    
                     <ul>
-                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
-                        <li><a href="mailto:info@example.com">info@example.com</a></li>
-                        <li>Ежедневно: 9:00 - 21:00</li>
+                        <li>
+  <strong>График работы:</strong><br>
+  Ежедневно c 9:00–21:00
+</li>
+
+                        <li><strong>Область:</strong><br> г.Казань, Республика Татарстан</li>
+                        <li><a href="../pages/privacy.html">Политика конфиденциальности</a></li>
+                       
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 ПрофЭлектрик. Все права защищены.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ПрофЭлектрик Казань. Все права защищены.</p>
+            </div>
         </div>
     </footer>
+
+
 
     <!-- Modal Window -->
     <div id="callModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Оставить заявку</h2>
-                <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
+            
+            <form id="modalForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
 
-            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
-                <div class="form-group">
-                    <label for="modalName">Ваше имя *</label>
-                    <input type="text" id="modalName" required placeholder="Ваше имя">
-                </div>
 
-                <div class="form-group">
-                    <label for="modalPhone">Телефон *</label>
-                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
-                </div>
+  <input type="hidden" name="fi-text-source" value="modal">
 
-                <div class="form-group">
-                    <label for="modalService">Услуга *</label>
-                    <select id="modalService" required>
-                        <option value="">-- Выберите услугу --</option>
-                        <option value="Монтаж розеток">Монтаж розеток</option>
-                        <option value="Монтаж выключателей">Монтаж выключателей</option>
-                        <option value="Установка освещения">Установка освещения</option>
-                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
-                        <option value="Монтаж автомата">Монтаж автомата</option>
-                        <option value="Аварийный вызов">Аварийный вызов</option>
-                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                </div>
+  
+<div class="form-group">
+  <label for="modalAnyName">Как к вам обращаться?</label>
+  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Введите ваше имя:">
+</div>
 
-                <div class="form-group">
-                    <label for="modalMessage">Опишите проблему</label>
-                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
-                    <button type="submit" class="btn">Отправить</button>
-                </div>
-            </form>
+  <div class="form-group">
+    <label for="modalPhone">Телефон *</label>
+    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="Номер телефона:">
+  </div>
+
+  <div class="form-group">
+    <label for="modalService">Услуга</label>
+    <select id="modalService" name="fi-select-service">
+      <option value="">-- Выберите услугу --</option>
+      <option value="Монтаж розеток">Монтаж розеток</option>
+      <option value="Монтаж выключателей">Монтаж выключателей</option>
+      <option value="Установка освещения">Установка освещения</option>
+      <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+      <option value="Монтаж автомата">Монтаж автомата</option>
+      <option value="Аварийный вызов">Аварийный вызов</option>
+      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+      <option value="Другое">Другое</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="modalMessage">Опишите проблему</label>
+    <textarea id="modalMessage" name="fi-text-message" placeholder="Опишите вашу проблему..."></textarea>
+  </div>
+
+  <div class="modal-footer">
+    
+    <button type="submit" class="btn">Отправить</button>
+  </div>
+
+  <p class="form-policy">
+    Нажимая кнопку «Отправить», вы соглашаетесь с
+    <a href="../pages/privacy.html" target="_blank">
+      политикой конфиденциальности
+    </a>
+  </p>
+</div>
+</form>
+
+
+
 
             <div id="modalSuccess" class="modal-success">
                 <div class="success-icon">✅</div>
@@ -758,105 +870,228 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // ===== Mobile menu toggle =====
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
+  <div id="thanksPopup" class="thanks-popup" aria-hidden="true">
+  <div class="thanks-popup__box">
+    <div class="thanks-popup__title">Спасибо за заявку!</div>
+    <div class="thanks-popup__text">Мы свяжемся с вами в ближайшее время.</div>
+  </div>
+</div>
 
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                });
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ===== Elements (сначала объявляем, потом используем) =====
+  var modal = document.getElementById('callModal');
+  var modalForm = document.getElementById('modalForm');
+  var modalSuccess = document.getElementById('modalSuccess');
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => navMenu.classList.remove('active'));
-                });
-            }
+  var contactForm = document.getElementById('contactForm');
+  var pageSuccess = document.getElementById('successMessage');
 
-            // ===== Sticky header offset =====
-            const topBar = document.getElementById('topBar');
-            const header = document.querySelector('header');
+  var menuToggle = document.getElementById('menuToggle');
+  var navMenu = document.getElementById('navMenu');
 
-            if (header) {
-                const getTopbarHeight = () => (topBar ? topBar.offsetHeight : 0);
+  var topBar = document.getElementById('topBar');
+  var header = document.querySelector('header');
 
-                header.style.top = `${getTopbarHeight()}px`;
+  var phoneLink = document.getElementById('phoneLink');
 
-                let lastScrollTop = 0;
-                window.addEventListener('scroll', () => {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var thanksPopup = document.getElementById('thanksPopup');
+  var thanksTimer = null;
 
-                    if (scrollTop > lastScrollTop) {
-                        header.style.top = '0px';
-                        header.style.zIndex = '102';
-                    } else {
-                        header.style.top = `${getTopbarHeight()}px`;
-                        header.style.zIndex = '100';
-                    }
+  // ===== Modal open/close =====
+  window.openModal = function () {
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                });
+    if (modalSuccess) modalSuccess.classList.remove('show');
+  };
 
-                window.addEventListener('resize', () => {
-                    header.style.top = `${getTopbarHeight()}px`;
-                });
-            }
+  window.closeModal = function () {
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
 
-            // ===== Copy phone to clipboard =====
-            const phoneLink = document.getElementById('phoneLink');
-            if (phoneLink) {
-                const originalText = phoneLink.textContent;
+    if (modalForm) modalForm.reset();
+    if (modalSuccess) modalSuccess.classList.remove('show');
+  };
 
-                phoneLink.addEventListener('click', async (e) => {
-                    e.preventDefault();
+  window.addEventListener('click', function (event) {
+    if (modal && event.target === modal) window.closeModal();
+  });
 
-                    const phoneToCopy = phoneLink.getAttribute('href')?.replace('tel:', '') || originalText;
+  // ===== Mobile menu toggle =====
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function () {
+      navMenu.classList.toggle('active');
+    });
 
-                    try {
-                        await navigator.clipboard.writeText(phoneToCopy);
-                        phoneLink.textContent = 'Скопировано!';
-                        setTimeout(() => (phoneLink.textContent = originalText), 1200);
-                    } catch (err) {
-                        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
-                    }
-                });
-            }
+    var navLinks = document.querySelectorAll('.nav-menu a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', function () {
+        navMenu.classList.remove('active');
+      });
+    }
+  }
+
+  // ===== Sticky header offset =====
+  if (header) {
+    var getTopbarHeight = function () {
+      return topBar ? topBar.offsetHeight : 0;
+    };
+
+    header.style.top = getTopbarHeight() + 'px';
+
+    var lastScrollTop = 0;
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        header.style.top = '0px';
+        header.style.zIndex = '102';
+      } else {
+        header.style.top = getTopbarHeight() + 'px';
+        header.style.zIndex = '100';
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    window.addEventListener('resize', function () {
+      header.style.top = getTopbarHeight() + 'px';
+    });
+  }
+
+  // ===== Thanks popup =====
+  function showThanksPopup() {
+    if (!thanksPopup) return;
+
+    // показать
+    thanksPopup.classList.add('show');
+    thanksPopup.setAttribute('aria-hidden', 'false');
+
+    // закрыть через 3 секунды
+    if (thanksTimer) clearTimeout(thanksTimer);
+    thanksTimer = setTimeout(function () { 
+      thanksPopup.classList.remove('show');
+      thanksPopup.setAttribute('aria-hidden', 'true');
+    }, 3000);
+  }
+
+  // ===== Copy phone to clipboard =====
+  if (phoneLink) {
+    var originalText = phoneLink.textContent;
+
+    phoneLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = phoneLink.getAttribute('href');
+      var phoneToCopy = href ? href.replace('tel:', '') : originalText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(phoneToCopy).then(function () {
+          phoneLink.textContent = 'Скопировано!';
+          setTimeout(function () {
+            phoneLink.textContent = originalText;
+          }, 1200);
+        }).catch(function () {
+          alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
         });
+      } else {
+        alert('Не удалось скопировать. Скопируйте вручную: ' + phoneToCopy);
+      }
+    });
+  }
 
-        // ===== Modal functionality =====
-        const modal = document.getElementById('callModal');
-        const modalForm = document.getElementById('modalForm');
-        const modalSuccess = document.getElementById('modalSuccess');
+  // ===== AJAX submit for forms (чтобы НЕ открывалось окно "OK") =====
+  async function sendForm(form) {
+    var body = new URLSearchParams(new FormData(form));
 
-        window.openModal = function () {
-            if (!modal) return;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (modalForm) modalForm.style.display = 'block';
-            if (modalSuccess) modalSuccess.classList.remove('show');
-        };
+    var res = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body,
+    });
 
-        window.closeModal = function () {
-            if (!modal) return;
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            if (modalForm) modalForm.reset();
-        };
+    var text = await res.text();
+    if (!res.ok) throw new Error(text || ('HTTP ' + res.status));
+    return text;
+  }
 
-        window.handleModalSubmit = function (event) {
-            event.preventDefault();
+  async function onSubmit(e) {
+    e.preventDefault(); // отменяем обычную отправку — НЕТ окна "ok" [web:945]
+    var form = e.currentTarget;
 
-            if (modalForm) modalForm.style.display = 'none';
-            if (modalSuccess) modalSuccess.classList.add('show');
+    try {
+      await sendForm(form);
+      form.reset();
+      showThanksPopup();
 
-            setTimeout(window.closeModal, 3000);
-        };
+      // если отправили из модалки — закрываем её через 3 секунды
+      if (form === modalForm && typeof window.closeModal === 'function') {
+        setTimeout(function () { window.closeModal(); }, 3000);
+      }
+    } catch (err) {
+      alert('Ошибка отправки: ' + (err && err.message ? err.message : err));
+    }
+  }
 
-        // Закрытие по клику на фон
-        window.addEventListener('click', (event) => {
-            if (modal && event.target === modal) window.closeModal();
-        });
-    </script>
+  if (contactForm) contactForm.addEventListener('submit', onSubmit);
+  if (modalForm) modalForm.addEventListener('submit', onSubmit);
+});
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('phoneBlock').addEventListener('click', async function(e) {
+    e.preventDefault(); // Предотвращает переход по ссылке
+    
+    const phoneNumber = '+79966075216';
+    
+    try {
+        await navigator.clipboard.writeText(phoneNumber);
+        
+        // Сохраняем оригинальное содержимое
+        const originalHTML = this.innerHTML;
+        
+        // Заменяем на сообщение
+        this.innerHTML = '<div style="text-align: center; padding: 20px;"><h3>Номер скопирован!</h3></div>';
+        
+        // Восстанавливаем через 4 секунды
+        setTimeout(() => {
+            this.innerHTML = originalHTML;
+        }, 4000);
+    } catch (err) {
+        console.error('Ошибка копирования: ', err);
+    }
+});
+document.getElementById('telegramBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('https://t.me/+79966075216', '_blank');
+});
+document.getElementById('whatsappBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('https://wa.me/+79966075216', '_blank');
+});
+document.getElementById('emailBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = 'mailto:info@profielectric.ru?subject=Запрос%20по%20электромонтажу&body=Здравствуйте!%0AИнтересуют%20услуги%20электрика.%0A%0AС%20уважением';
+});
+document.getElementById('scheduleBlock').addEventListener('click', function(e) {
+    e.preventDefault();
+       const originalHTML = this.innerHTML;
+        this.innerHTML = '<div style="text-align: center; padding: 20px;"><h3>Работаем без выходных!</h3></div>';
+        setTimeout(() => {
+        this.innerHTML = originalHTML;
+    }, 4000);
+});
+
+</script>
+
 </body>
 </html>
