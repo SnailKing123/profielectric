@@ -248,7 +248,7 @@ footer {
 }
 
 .footer-section h4 {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: var(--color-accent);
 }
 
@@ -259,7 +259,7 @@ footer {
 }
 
 .footer-section ul li {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .footer-section a {
@@ -278,6 +278,38 @@ footer {
   border-top: 1px solid #333;
   color: #999;
   font-size: 14px;
+}
+
+
+/* ===== Privacy ===== */
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end; /* кнопки справа, как обычно */
+}
+
+.form-policy {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 12px; /* отступ сверху от кнопок */
+}
+
+.form-policy a {
+  color: #888;
+  text-decoration: underline;
+}
+
+.form-policy a:hover {
+  color: var(--color-primary);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -310,24 +342,7 @@ footer {
   }
 }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --color-primary: #1565C0;
-            --color-primary-dark: #0D3A96;
-            --color-text: #333;
-            --color-text-light: #555;
-            --color-bg: #f5f5f5;
-            --color-white: #fff;
-            --color-accent: #FF9800;
-            --color-success: #4CAF50;
-            --color-danger: #1565C0;
-        }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
