@@ -801,75 +801,52 @@
         </div>
     </footer>
 
-<!-- Модальное окно Отзыва -->
+<!-- Модальное окно отзывов -->
 <div id="reviewModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>Оставить отзыв</h2>
-      <button class="close-btn" type="button" onclick="closeReviewModal()">&times;</button>
-    </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Оставить отзыв</h2>
+            <button class="close-btn" type="button" onclick="closeReviewModal()">×</button>
+        </div>
 
-<form id="modalForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
+        <form id="reviewForm"
+              action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp"
+              method="POST">
 
-  
-      <div class="form-group">
-        <label for="name">Ваше имя *</label>
-        <input type="text" id="name" name="name" placeholder="Введите ваше имя..." required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Номер телефона *</label>
-        <input type="tel" id="phone" name="phone" placeholder="Введите ваш номер..." required>
-      </div>
-
-      <div class="form-group">
-        <label for="service">Какую услугу получили? *</label>
-        <select id="service" name="service" required>
-          <option value="">-- Выберите услугу --</option>
-          <option value="Монтаж розеток">Монтаж розеток</option>
-          <option value="Монтаж выключателей">Монтаж выключателей</option>
-          <option value="Монтаж люстры">Монтаж люстры</option>
-          <option value="Электропроводка">Электропроводка</option>
-          <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-          <option value="Замена счётчика">Замена счётчика</option>
-          <option value="Монтаж УЗО">Монтаж УЗО</option>
-          <option value="Другое">Другое</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="rating">Оценка *</label>
-        <select id="rating" name="rating" required>
-          <option value="">-- Укажите оценку --</option>
-          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Отлично</option>
-          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Хорошо</option>
-          <option value="⭐⭐⭐">⭐⭐⭐ Нормально</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="text">Ваш отзыв *</label>
-        <textarea id="text" name="text" placeholder="Расскажите о вашем опыте работы с нашей компанией..." required></textarea>
-      </div>
-
-      <button type="submit" class="btn-submit">Отправить отзыв</button>
-<p class="form-policy">
-    Нажимая кнопку «Отправить», вы соглашаетесь с
-    <a href="../pages/privacy.html" target="_blank">
-      политикой конфиденциальности
-    </a>
-  </p>
-
-    </form>
-<div id="modalSuccess" class="modal-success">
-                <div class="success-icon">✅</div>
-                <h3>Заявка отправлена!</h3>
-                <p>Спасибо за вашу заявку. Наш менеджер свяжется с вами в течение 10 минут.</p>
+            <div class="form-group">
+                <label>Ваше имя *</label>
+                <input type="text" name="review_name" required>
             </div>
 
-  </div>
-</div>
+            <div class="form-group">
+                <label>Номер телефона *</label>
+                <input type="tel" name="review_phone" placeholder="+7 (999) 999-99-99" required>
+            </div>
 
+            <div class="form-group">
+                <label>Оценка *</label>
+                <select name="review_rating" required>
+                    <option value="">— Выберите —</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Отлично</option>
+                    <option value="4">⭐⭐⭐⭐ Хорошо</option>
+                    <option value="3">⭐⭐⭐ Нормально</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ваш отзыв *</label>
+                <textarea name="review_text"
+                          placeholder="Напишите несколько слов о работе мастера"
+                          required></textarea>
+            </div>
+
+            <!-- скрытое поле-метка -->
+            <input type="hidden" name="form_type" value="review">
+
+            <button type="submit" class="btn-submit">Отправить отзыв</button>
+        </form>
+    </div>
+</div>
  <!-- Modal Window -->
     <div id="callModal" class="modal">
         <div class="modal-content">
@@ -1108,6 +1085,42 @@ prevBtn.addEventListener('click', () => {
     <div class="thanks-popup__text">Мы свяжемся с вами в ближайшее время.</div>
   </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const reviewForm = document.getElementById('reviewForm');
+
+    if (!reviewForm) return;
+
+    reviewForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(reviewForm);
+
+        fetch(reviewForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(() => {
+            reviewForm.reset();
+            closeReviewModal();
+        })
+        .catch(err => {
+            console.error('Ошибка отправки:', err);
+            alert('Не удалось отправить отзыв');
+        });
+    });
+});
+
+// функции управления модалкой
+function openReviewModal() {
+    document.getElementById('reviewModal').style.display = 'flex';
+}
+
+function closeReviewModal() {
+    document.getElementById('reviewModal').style.display = 'none';
+}
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1380,6 +1393,7 @@ function submitReview(event) {
     // Можно добавить всплывающее "Спасибо за отзыв"
     alert('Спасибо за ваш отзыв!');
 }
+
 </script>
 
 </body>
