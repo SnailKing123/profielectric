@@ -563,7 +563,7 @@
         <div class="container">
             <h1>Отзывы наших клиентов</h1>
         <p class="subtitle">Читайте, что говорят о нашей работе люди, которым мы помогли решить проблемы с электричеством</p>
-<button class="btn-call" type="button" onclick="openReviewModal()">Оставить отзыв</button>
+ 	<button class="btn" type="button" onclick="openModal()">Оставить отзыв</button>
         </div>
     </section>
 
@@ -801,57 +801,13 @@
         </div>
     </footer>
 
-<!-- Модальное окно отзывов -->
-<div id="reviewModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Оставить отзыв</h2>
-            <button class="close-btn" type="button" onclick="closeReviewModal()">×</button>
-        </div>
 
-        <form id="reviewForm"
-              action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp"
-              method="POST">
 
-            <div class="form-group">
-                <label>Ваше имя *</label>
-                <input type="text" name="review_name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Номер телефона *</label>
-                <input type="tel" name="review_phone" placeholder="+7 (999) 999-99-99" required>
-            </div>
-
-            <div class="form-group">
-                <label>Оценка *</label>
-                <select name="review_rating" required>
-                    <option value="">— Выберите —</option>
-                    <option value="5">⭐⭐⭐⭐⭐ Отлично</option>
-                    <option value="4">⭐⭐⭐⭐ Хорошо</option>
-                    <option value="3">⭐⭐⭐ Нормально</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Ваш отзыв *</label>
-                <textarea name="review_text"
-                          placeholder="Напишите несколько слов о работе мастера"
-                          required></textarea>
-            </div>
-
-            <!-- скрытое поле-метка -->
-            <input type="hidden" name="form_type" value="review">
-
-            <button type="submit" class="btn-submit">Отправить отзыв</button>
-        </form>
-    </div>
-</div>
  <!-- Modal Window -->
     <div id="callModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Оставить заявку</h2>
+                <h2>ProfElectric</h2>
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             
@@ -862,34 +818,20 @@
 
   
 <div class="form-group">
-  <label for="modalAnyName">Как к вам обращаться?</label>
-  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Введите ваше имя:">
+  <label for="modalAnyName">Как вас зовут?</label>
+  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Введите ваше имя...">
 </div>
 
 
   <div class="form-group">
     <label for="modalPhone">Телефон *</label>
-    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="Номер телефона:">
+    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="Номер телефона...">
   </div>
 
+  
   <div class="form-group">
-    <label for="modalService">Услуга</label>
-    <select id="modalService" name="fi-select-service">
-      <option value="">-- Выберите услугу --</option>
-      <option value="Монтаж розеток">Монтаж розеток</option>
-      <option value="Монтаж выключателей">Монтаж выключателей</option>
-      <option value="Установка освещения">Установка освещения</option>
-      <option value="Монтаж электропроводки">Монтаж электропроводки</option>
-      <option value="Монтаж автомата">Монтаж автомата</option>
-      <option value="Аварийный вызов">Аварийный вызов</option>
-      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-      <option value="Другое">Другое</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="modalMessage">Опишите проблему</label>
-    <textarea id="modalMessage" name="fi-text-message" placeholder="Опишите вашу проблему..."></textarea>
+    <label for="modalMessage">Оставьте комментарий</label>
+    <textarea id="modalMessage" name="fi-text-message" placeholder="Опишите подробнее..."></textarea>
   </div>
 
   <div class="modal-footer">
@@ -1085,42 +1027,6 @@ prevBtn.addEventListener('click', () => {
     <div class="thanks-popup__text">Мы свяжемся с вами в ближайшее время.</div>
   </div>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const reviewForm = document.getElementById('reviewForm');
-
-    if (!reviewForm) return;
-
-    reviewForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(reviewForm);
-
-        fetch(reviewForm.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.text())
-        .then(() => {
-            reviewForm.reset();
-            closeReviewModal();
-        })
-        .catch(err => {
-            console.error('Ошибка отправки:', err);
-            alert('Не удалось отправить отзыв');
-        });
-    });
-});
-
-// функции управления модалкой
-function openReviewModal() {
-    document.getElementById('reviewModal').style.display = 'flex';
-}
-
-function closeReviewModal() {
-    document.getElementById('reviewModal').style.display = 'none';
-}
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1335,64 +1241,6 @@ document.getElementById('scheduleBlock').addEventListener('click', function(e) {
         this.innerHTML = originalHTML;
     }, 4000);
 });
-
-</script>
-<script>
-// ===== Открытие/закрытие формы отзывов =====
-const reviewModal = document.getElementById('reviewModal');
-const reviewForm = document.getElementById('reviewForm');
-
-function openReviewModal() {
-    reviewModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeReviewModal() {
-    reviewModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    reviewForm.reset();
-}
-
-// Закрытие при клике на фон
-window.addEventListener('click', (e) => {
-    if (e.target === reviewModal) closeReviewModal();
-});
-
-// ===== Отправка формы =====
-function submitReview(event) {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    const rating = document.getElementById('rating').value;
-    const text = document.getElementById('text').value;
-
-    // Добавление отзыва в блок с отзывами (reviews-grid)
-    const reviewsGrid = document.querySelector('.reviews-track') || document.querySelector('.reviews-grid');
-    if (reviewsGrid) {
-        const newReview = document.createElement('div');
-        newReview.classList.add('review-card');
-        newReview.innerHTML = `
-            <div class="review-header">
-                <div class="review-info">
-                    <div class="review-name">${name}</div>
-                    <div class="review-service">${service}</div>
-                </div>
-                <div class="review-rating">${rating}</div>
-            </div>
-            <p class="review-text">${text}</p>
-            <div class="review-done">✔ Сделка состоялась</div>
-        `;
-        reviewsGrid.prepend(newReview); // добавляем наверх
-    }
-
-    // Закрываем модалку
-    closeReviewModal();
-
-    // Можно добавить всплывающее "Спасибо за отзыв"
-    alert('Спасибо за ваш отзыв!');
-}
 
 </script>
 
