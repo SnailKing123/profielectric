@@ -231,7 +231,7 @@
 
         .ask-question-section p {
             text-align: center;
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 30px;
             opacity: 0.95;
         }
@@ -326,7 +326,7 @@ textarea::placeholder {
             border-left: 4px solid var(--color-primary);
             padding: 20px;
             border-radius: 5px;
-            margin: 30px 0;
+            margin: 30px 70px;
         }
 
         .info-box p {
@@ -840,54 +840,70 @@ textarea::placeholder {
 
             <!-- Info Box -->
             <div class="info-box">
-                <p><strong>💡 Быстрый ответ:</strong> Если вопрос срочный, позвоните нам по телефону <strong>+7 (999) 123-45-67</strong>. Наши специалисты ответят на любой вопрос в течение 5 минут!</p>
+                <p>💡 <strong>Быстрый ответ:</strong> Если вопрос срочный, позвоните нам по телефону <strong>+7 (996) 607-52-16</strong>. Наши специалисты ответят на любой вопрос!</p>
             </div>
         </div>
     </main>
-<!-- Modal Window -->
-    <div id="callModal" class="modal">
+<div id="callModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Оставить заявку</h2>
-                <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
+            
+            <form id="modalForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
 
-            <form id="modalForm" class="modal-form" onsubmit="handleModalSubmit(event)">
-                <div class="form-group">
-                    <label for="modalName">Ваше имя *</label>
-                    <input type="text" id="modalName" required placeholder="Ваше имя">
-                </div>
 
-                <div class="form-group">
-                    <label for="modalPhone">Телефон *</label>
-                    <input type="tel" id="modalPhone" required placeholder="+7 (999) 123-45-67">
-                </div>
+  <input type="hidden" name="fi-text-source" value="modal">
 
-                <div class="form-group">
-                    <label for="modalService">Услуга *</label>
-                    <select id="modalService" required>
-                        <option value="">-- Выберите услугу --</option>
-                        <option value="Монтаж розеток">Монтаж розеток</option>
-                        <option value="Монтаж выключателей">Монтаж выключателей</option>
-                        <option value="Установка освещения">Установка освещения</option>
-                        <option value="Монтаж электропроводки">Монтаж электропроводки</option>
-                        <option value="Монтаж автомата">Монтаж автомата</option>
-                        <option value="Аварийный вызов">Аварийный вызов</option>
-                        <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                </div>
+  
+<div class="form-group">
+  <label for="modalAnyName">Как к вам обращаться?</label>
+  <input type="text" id="modalAnyName" name="fi-text-anyName" placeholder="Введите ваше имя:">
+</div>
 
-                <div class="form-group">
-                    <label for="modalMessage">Опишите проблему</label>
-                    <textarea id="modalMessage" placeholder="Опишите вашу проблему..."></textarea>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
-                    <button type="submit" class="btn">Отправить</button>
-                </div>
-            </form>
+  <div class="form-group">
+    <label for="modalPhone">Телефон *</label>
+    <input type="tel" id="modalPhone" name="fi-sender-phone" required placeholder="Номер телефона:">
+  </div>
+
+  <div class="form-group">
+    <label for="modalService">Услуга</label>
+    <select id="modalService" name="fi-select-service">
+      <option value="">-- Выберите услугу --</option>
+      <option value="Монтаж розеток">Монтаж розеток</option>
+      <option value="Монтаж выключателей">Монтаж выключателей</option>
+      <option value="Установка освещения">Установка освещения</option>
+      <option value="Монтаж электропроводки">Монтаж электропроводки</option>
+      <option value="Монтаж автомата">Монтаж автомата</option>
+      <option value="Аварийный вызов">Аварийный вызов</option>
+      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
+      <option value="Другое">Другое</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="modalMessage">Опишите проблему</label>
+    <textarea id="modalMessage" name="fi-text-message" placeholder="Опишите вашу проблему..."></textarea>
+  </div>
+
+  <div class="modal-footer">
+    
+    <button type="submit" class="btn">Отправить</button>
+  </div>
+
+  <p class="form-policy">
+    Нажимая кнопку «Отправить», вы соглашаетесь с
+    <a href="../pages/privacy.html" target="_blank">
+      политикой конфиденциальности
+    </a>
+  </p>
+</div>
+</form>
+
+
+
 
             <div id="modalSuccess" class="modal-success">
                 <div class="success-icon">✅</div>
@@ -896,6 +912,14 @@ textarea::placeholder {
             </div>
         </div>
     </div>
+
+  <div id="thanksPopup" class="thanks-popup" aria-hidden="true">
+  <div class="thanks-popup__box">
+    <div class="thanks-popup__title">Спасибо за заявку!</div>
+    <div class="thanks-popup__text">Мы свяжемся с вами в ближайшее время.</div>
+  </div>
+</div>
+
 
    
 
@@ -933,69 +957,7 @@ textarea::placeholder {
             event.target.reset();
         }
     </script>
-  <!-- Contact Form Section -->
-<section class="form-section" id="contact">
-  <div class="container">
-    <h2 style="color: var(--color-primary);">Заказать услугу</h2>
-
-    <div class="form-container">
-      <div class="success-message" id="successMessage" style="display:none;">
-        ✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
-      </div>
-
-      <form id="contactForm" action="https://functions.yandexcloud.net/d4emt21c53nvrp305lqp" method="POST">
-
-
-
-  <!-- это поле можно убрать, но можно и оставить как текстовый блок -->
-  <input type="hidden" name="fi-text-source" value="page">
-
   
-<div class="form-group">
-  <label for="anyName">Как к вам обращаться? </label>
-  <input type="text" id="anyName" name="fi-text-anyName" placeholder="Введите ваше имя">
-</div>
-
-
-  <div class="form-group">
-    <label for="phone">Телефон *</label>
-    <input type="tel" id="phone" name="fi-sender-phone" required placeholder="Номер телефона">
-  </div>
-
-  <div class="form-group">
-    <label for="service">Услуга *</label>
-    <select id="service" name="fi-select-service">
-      <option value="">-- Выберите услугу --</option>
-      <option value="Установка розеток">Установка розеток</option>
-      <option value="Установка выключателей">Установка выключателей</option>
-      <option value="Установка люстр и светильников">Установка люстр и светильников</option>
-      <option value="Ремонт электропроводки">Ремонт электропроводки</option>
-      <option value="Прокладка кабеля">Прокладка кабеля</option>
-      <option value="Монтаж счетчика">Монтаж счетчика</option>
-      <option value="Экстренный ремонт">Экстренный ремонт</option>
-      <option value="Другое">Другое</option>
-    </select>
-  </div>
-
-
-  <div class="form-group">
-    <label for="message">Описание проблемы</label>
-    <textarea id="message" name="fi-text-message" placeholder="Опишите вашу проблему подробнее..."></textarea>
-  </div>
-
-  <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
-</form>
- <p class="form-policy">
-    Нажимая кнопку «Отправить», вы соглашаетесь с
-    <a href="../pages/privacy.html" target="_blank">
-      политикой конфиденциальности
-    </a>
-  </p>
-
-    </div>
-  </div>
-</section>
-
 
 
      <!-- Footer -->
@@ -1349,7 +1311,7 @@ document.getElementById('scheduleBlock').addEventListener('click', function(e) {
     e.preventDefault();
        const originalHTML = this.innerHTML;
         this.innerHTML = '<div style="text-align: center; padding: 20px;"><h3>Работаем без выходных!</h3></div>';
-        setTimeout(() => {
+        setTimeout(() => {	
         this.innerHTML = originalHTML;
     }, 4000);
 });
