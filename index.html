@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Электрик в Казани - Профессиональные услуги</title>
+<link rel="canonical" href="https://www.profielectric.ru/">
     <style>  	
  /* Hero Section */
         .hero {
@@ -28,6 +29,433 @@
             margin-left: auto;
             margin-right: auto;
         }
+/* Free Consultation */
+.consultation {
+  background: linear-gradient(135deg, #1565C0, #0D3A96);
+  padding: 60px 0;
+  color: #fff;
+}
+
+.consultation-box {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.consultation-text h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.consultation-text p {
+  font-size: 16px;
+  opacity: 0.95;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.consultation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.consultation-list li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.consultation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.consultation-actions .btn {
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .consultation-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .consultation-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.reviews-section {
+  padding: 60px 0;
+  background: #f5f7fb;
+}
+
+.reviews-section h2 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+/* Сетка */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* Карточка */
+.review-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 4px solid #2196F3;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Верх */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.review-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+.review-service {
+  font-size: 13px;
+  color: #2196F3;
+  background: #E3F2FD;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 6px;
+  width: fit-content;
+}
+
+.review-rating {
+  color: #FFB800;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* Текст */
+.review-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin: 14px 0;
+}
+
+/* Низ */
+.review-done {
+  font-size: 13px;
+  color: #32cd32;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 45px 0;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+}
+.reviews-more {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Блок "О компании" */
+
+
+.about-company {
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    padding: 50px 20px;
+    border-radius: 16px;
+    margin: 60px 0;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-company::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(33, 150, 243, 0.1), transparent 70%);
+    z-index: 0;
+    transform: rotate(45deg);
+}
+
+.about-company:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.about-company h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #1565C0;
+    position: relative;
+    z-index: 1;
+}
+
+.about-company p {
+    font-size: 1em;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-about {
+    position: relative;
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #2196F3, #1565C0);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.btn-about::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: -1;
+}
+
+.btn-about:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-about:hover::after {
+    opacity: 0.8;
+    transform: translateY(2px) scale(1.05);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .about-company h2 {
+        font-size: 1.7em;
+    }
+
+    .about-company p {
+        font-size: 0.95em;
+    }
+
+    .btn-about {
+        padding: 12px 28px;
+        font-size: 0.95em;
+    }
+}
+
+/* Секция цен */
+.prices-section {
+  background: var(--color-bg);
+  padding: 60px 0;
+}
+
+.prices-section h2 {
+  text-align: center;
+  font-size: 32px;
+  color: var(--color-primary);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.prices-section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Таблица цен */
+.prices-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.prices-table th,
+.prices-table td {
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.prices-table th {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.prices-table tr:nth-child(even) td {
+  background: #f5f5f5;
+}
+
+.prices-table .price-value {
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* Примечание под таблицей */
+.prices-note {
+  background: #eef6ff;
+  border-left: 4px solid var(--color-primary);
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Кнопка CTA */
+.prices-cta {
+  text-align: center;
+}
+
+.prices-cta .btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.prices-cta .btn:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,152,0,0.4);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .prices-section h2 {
+    font-size: 26px;
+  }
+  .prices-table th, .prices-table td {
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+}
+/* Блок "полный прайс" */
+.prices-more {
+  background: #eef6ff;
+  border-left: 4px solid var(--color-primary);
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #555;
+}
+
+.prices-more p {
+  margin-bottom: 15px;
+}
+
+.prices-more .btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 35px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.prices-more .btn:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,152,0,0.4);
+}
+.price-link {
+  font-size: 14px;      /* обычный размер текста */
+  color: var(--color-primary); /* цвет ссылки */
+  text-decoration: underline;  /* подчёркивание для ссылки */
+  font-weight: normal;   /* обычный вес */
+}
+
+.price-link:hover {
+  color: var(--color-primary-dark); /* цвет при наведении */
+}
+.prices-cta {
+    text-align: center; /* центрируем содержимое */
+    margin-top: 35px;   /* немного отступа сверху */
+}
+
+.prices-cta .btn {
+    display: inline-block; /* чтобы кнопка занимала только свою ширину */
+}
   </style>
  <link rel="stylesheet" href="styles/styles.css">
 <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
@@ -152,7 +580,7 @@
   <circle cx="10" cy="12" r="1" fill="#fff"/>
 </svg>
                             </div>
-                <div class="quick-service-name">Монтаж розеток</div>
+                <div class="quick-service-name">Установка розеток</div>
             </div>
             <a href="pages/uslugi/zamena-vikluchatelya.html" class="quick-service-item">
  		<div class="quick-service-icon"><svg xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +647,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
   </g>
 </svg>
 </div>
-                <div class="quick-service-name">Аварийный вызов</div>
+                <div class="quick-service-name">Устранение КЗ</div>
             </div>
         </div>
     </section>
@@ -231,7 +659,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
         <!-- About Section -->
         <section id="about">
             <div class="container">
-                <h2><a href="pages/about-company.html" class="hero-link">О нашей компании</a></h2>
+                <h2><a href="pages/about-company.html" class="hero-link">Преимущества работы с нами</a></h2>
                 <div class="about-grid">
                     <div class="about-card">
                         <h4>✅ Качество работ</h4>
@@ -261,125 +689,99 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services">
-            <div class="container">
-                <h2><a href="pages/uslugi-i-ceny.html" class="hero-link">Услуги электрика</a></h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔌</div>
-                        <h3>Установка розеток</h3>
-                        <p>Установка розеток любых типов с соблюдением норм безопасности</p>
-                        <div class="price">от 190 ₽</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">💡</div>
-                        <h3>Установка выключателей</h3>
-                        <p>Монтаж выключателей, включая диммеры и сенсорные выключатели</p>
-                        <div class="price">от 190 ₽</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🔔</div>
-                        <h3>Установка звонков</h3>
-                        <p>Монтаж электрических звонков с проводкой</p>
-                        <div class="price">от 200 ₽</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">💫</div>
-                        <h3>Люстры и светильники</h3>
-                        <p>Профессиональная установка и подключение осветительных приборов</p>
-                        <div class="price">от 380 ₽</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🔥</div>
-                        <h3>Ремонт проводки</h3>
-                        <p>Диагностика и устранение проблем с электропроводкой</p>
-                        <div class="price">от 490 ₽</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">📐</div>
-                        <h3>Прокладка кабеля</h3>
-                        <p>Прокладка новых кабелей и проводки под ключ</p>
-                        <div class="price">от 30 ₽/п.м.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  
 
-        <!-- Prices Section -->
-        <section id="prices">
-            <div class="container">
-                <h2>Прайс-лист услуг</h2>
-                <div class="prices-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Услуга</th>
-                                <th>Стоимость</th>
-                                <th>Описание</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Установка розеток</td>
-                                <td>от 190 ₽</td>
-                                <td>Монтаж одной розетки</td>
-                            </tr>
-                            <tr>
-                                <td>Установка выключателей</td>
-                                <td>от 190 ₽</td>
-                                <td>Монтаж одного выключателя</td>
-                            </tr>
-                            <tr>
-                                <td>Установка звонка</td>
-                                <td>от 200 ₽</td>
-                                <td>Полная установка со звонком</td>
-                            </tr>
-                            <tr>
-                                <td>Установка люстр, светильников</td>
-                                <td>от 380 ₽</td>
-                                <td>Монтаж и подключение</td>
-                            </tr>
-                            <tr>
-                                <td>Устранение обрыва, короткого замыкания</td>
-                                <td>от 490 ₽</td>
-                                <td>Диагностика и ремонт</td>
-                            </tr>
-                            <tr>
-                                <td>Ремонт электропроводки</td>
-                                <td>от 490 ₽</td>
-                                <td>Полная диагностика и ремонт</td>
-                            </tr>
-                            <tr>
-                                <td>Прокладка кабеля</td>
-                                <td>от 30 ₽/п.м.</td>
-                                <td>За 1 погонный метр</td>
-                            </tr>
-                            <tr>
-                                <td>Штробление стен</td>
-                                <td>от 400 ₽/п.м.</td>
-                                <td>За 1 погонный метр</td>
-                            </tr>
-                            <tr>
-                                <td>Монтаж счетчика электроэнергии</td>
-                                <td>от 400 ₽</td>
-                                <td>Полная установка</td>
-                            </tr>
-                            <tr>
-                                <td>Установка автоматов, УЗО</td>
-                                <td>от 250 ₽</td>
-                                <td>За один прибор</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p style="text-align: center; margin-top: 20px; color: var(--color-text-light); font-size: 14px;">
-                    * Точная стоимость определяется после консультации и оценки объема работ. Предоставляем скидки при больших объемах.
-                </p>
-            </div>
-        </section>
+   <section class="prices-section">
+  <div class="container">
+    <h2>Цены на услуги</h2>
 
-<!-- Этапы работы с нами -->
+    <!-- Таблица с основными услугами (preview) -->
+    <table class="prices-table">
+      <thead>
+        <tr>
+          <th>Услуга</th>
+          <th>Описание</th>
+          <th>Цена</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Монтаж розеток</td>
+          <td>Установка розеток с гарантией качества</td>
+          <td class="price-value">500 ₽</td>
+        </tr>
+        <tr>
+          <td>Замена проводки</td>
+          <td>Полная замена старой проводки в квартире</td>
+          <td class="price-value">от 3500 ₽</td>
+        </tr>
+        <tr>
+          <td>Установка светильников</td>
+          <td>Монтаж потолочных и настенных светильников</td>
+          <td class="price-value">от 300 ₽</td>
+        </tr>
+<tr>
+          <td></td>
+          <td><a href="pages/uslugi-i-ceny.html" class="price-link">Смотреть цены на все наши услуги...</a></td>
+          <td class="price-value"></td>
+        </tr>
+      </tbody>
+    </table>
+
+   
+      <div class="prices-cta">
+    <a href="pages/uslugi-i-ceny.html" class="btn">Полный прайс-лист</a>
+</div>
+      </div>
+</section>
+
+
+
+<!-- Блок "О компании" -->
+<section class="about-company">
+    <div class="container">
+        <h2>О нашей компании</h2>
+        <p>
+            ПрофЭлектрик — профессиональные электромонтажные услуги в Казани и области.  
+            Наши мастера выполняют работу быстро, качественно и с гарантией.  
+        </p>
+        <a href="pages/about-company.html" class="btn btn-about">Подробнее о компании</a>
+    </div>
+</section>
+
+<!-- Free Consultation -->
+<section class="consultation">
+  <div class="container">
+    <div class="consultation-box">
+      
+      <div class="consultation-text">
+        <h1>Бесплатная консультация электрика</h1>
+        <p>
+          Подскажем оптимальное решение, рассчитаем стоимость работ и ответим
+          на все вопросы — <strong>бесплатно и без обязательств</strong>.
+        </p>
+
+        <ul class="consultation-list">
+          <li>⚡ Консультация по телефону или в мессенджерах</li>
+          <li>📋 Предварительный расчет стоимости</li>
+          <li>🛡️ Советы по безопасности и нормам ПУЭ</li>
+        </ul>
+      </div>
+
+      <div class="consultation-actions">
+        <a href="tel:+79966075216" class="btn btn-primary">
+          📞 Бесплатная консультация электрика
+        </a>
+        <button class="btn btn-secondary" onclick="openModal()">
+          ✍️ Оставить заявку
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      <!-- Этапы работы с нами -->
 <section class="work-steps" id="work-steps">
   <div class="container">
     <h2>Этапы работы с нами</h2>
@@ -434,6 +836,77 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
     </div>
   </div>
 </section>
+
+<section class="reviews-section">
+  <div class="container">
+
+    <h2>Отзывы клиентов</h2>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-info">
+            <div class="review-name">Иван Петров</div>
+            <div class="review-service">Монтаж розеток</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+
+        <p class="review-text">
+          Спасибо за качественную работу! Мастер приехал вовремя,
+          всё сделал аккуратно и профессионально. Цена справедливая.
+        </p>
+
+        <div class="review-done">✔ Сделка состоялась</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-info">
+            <div class="review-name">Лилия Камалова</div>
+            <div class="review-service">Установка люстры</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+
+        <p class="review-text">
+          Очень довольна! Люстра висит идеально, мастер всё объяснил
+          и убрал за собой. Рекомендую.
+        </p>
+
+        <div class="review-done">✔ Сделка состоялась</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-info">
+            <div class="review-name">Рамиль Юсупов</div>
+            <div class="review-service">Ремонт электропроводки</div>
+          </div>
+          <div class="review-rating">★★★★</div>
+        </div>
+
+        <p class="review-text">
+          Немного задержались по времени, но качество отличное.
+          Всё выполнено по правилам.
+        </p>
+
+        <div class="review-done">✔ Сделка состоялась</div>
+      </div>
+
+      <!-- добавляй дальше -->
+    </div>
+
+  </div>
+<div class="reviews-more">
+  <a href="pages/otzivy.html" class="btn btn-outline">
+    Смотреть все отзывы
+  </a>
+</div>
+
+</section>
+
 
 
 <!-- Contact Form Section -->
@@ -490,7 +963,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
 </form>
  <p class="form-policy">
     Нажимая кнопку «Отправить», вы соглашаетесь с
-    <a href="pages/privasy.html" target="_blank">
+    <a href="pages/privacy.html" target="_blank">
       политикой конфиденциальности
     </a>
   </p>
@@ -533,7 +1006,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
                     
                     <ul>
                         <li><a href="tel:+79966075216">+7 (996) 607-52-16</a></li>
-                        <li><a href="mailto:info@profielectrik.ru">info@profielectrik.ru</a></li>
+                        <li><a href="mailto:info@profielectric.ru">info@profielectric.ru</a></li>
                         <li><a href="#" onclick="openModal()">Обратный звонок</a></li>
                          <li><a href="https://t.me/+79966075216?text=Здравствуйте! Хочу заказать услуги по электромонтажу. Когда можно созвониться?" id="telegramLink">Telegram</a>
 
@@ -598,7 +1071,7 @@ l2.51,11.833l4.548-9.369l-1.962,1.241L36.8,30.437z"
       <option value="Установка освещения">Установка освещения</option>
       <option value="Монтаж электропроводки">Монтаж электропроводки</option>
       <option value="Монтаж автомата">Монтаж автомата</option>
-      <option value="Аварийный вызов">Аварийный вызов</option>
+      <option value="Устранение КЗ">Устранение КЗ</option>
       <option value="Ремонт электропроводки">Ремонт электропроводки</option>
       <option value="Другое">Другое</option>
     </select>
